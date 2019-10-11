@@ -1,0 +1,337 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Module Utility Functions Search Algorithms &mdash; ACC Falsification Tool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Common" href="../common/modules.html" />
+    <link rel="prev" title="Module RRT Forward" href="rrt_forward.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ACC Falsification Tool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">ACC Falsification</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../acc/modules.html">Adaptive Cruise Control Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../acc/acc_collision_avoidance.html">Module Collision Avoidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../acc/acc_extended_pi.html">Module Extended PI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../acc/acc_intelligent_driver_model.html">Module Intelligent Driver Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../acc/acc_interface.html">Module ACC Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../acc/acc_pi.html">Module Simple PI</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Leading Vehicle Search</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="backward_search.html">Module Backward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="forward_search.html">Module Forward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="monte_carlo_simulation.html">Modul Monte Carlo Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rrt.html">Module RRT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rrt_backward.html">Module RRT Backward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rrt_forward.html">Module RRT Forward</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Module Utility Functions Search Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../common/modules.html">Common</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../common/configuration.html">Module Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../common/node.html">Module Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../common/state.html">Module State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../common/utility_fcts.html">Module Utility Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../common/utility_safety.html">Module Utility Functions Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../output/modules.html">Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../output/visualization.html">Module Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../output/storage.html">Module Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../falsification.html">Module Falsification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../review.html">Module Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config.html">Module Config</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ACC Falsification Tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../modules.html">ACC Falsification</a> &raquo;</li>
+        
+          <li><a href="modules.html">Leading Vehicle Search</a> &raquo;</li>
+        
+      <li>Module Utility Functions Search Algorithms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api/lead_search/utility_search.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-utility-functions-search-algorithms">
+<h1>Module Utility Functions Search Algorithms<a class="headerlink" href="#module-utility-functions-search-algorithms" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-utility_search"></span><dl class="function">
+<dt id="utility_search.backward_simulation">
+<code class="sig-prename descclassname">utility_search.</code><code class="sig-name descname">backward_simulation</code><span class="sig-paren">(</span><em class="sig-param">x_position_center</em>, <em class="sig-param">y_position_center</em>, <em class="sig-param">steering_angle</em>, <em class="sig-param">velocity</em>, <em class="sig-param">yaw_angle</em>, <em class="sig-param">inputs</em>, <em class="sig-param">end_time</em>, <em class="sig-param">dt</em>, <em class="sig-param">vehicle_parameter</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/utility_search.html#backward_simulation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utility_search.backward_simulation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backward simulation with kinematic single-track model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x_position_center</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – x-position of the vehicle center [m]</p></li>
+<li><p><strong>y_position_center</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – y-position of the vehicle center [m]</p></li>
+<li><p><strong>steering_angle</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – steering angle of the vehicle [rad]</p></li>
+<li><p><strong>velocity</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – velocity of the vehicle [m/s]</p></li>
+<li><p><strong>yaw_angle</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – yaw angle of the vehicle [rad]</p></li>
+<li><p><strong>inputs</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – inputs [steering velocity, acceleration] of the vehicle [rad/s, m/s^2]</p></li>
+<li><p><strong>end_time</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – end time for the backward simulation [s]</p></li>
+<li><p><strong>dt</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – time step [s]</p></li>
+<li><p><strong>vehicle_parameter</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]) – vehicle parameter vector</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>right-hand side of differential equations</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="utility_search.check_feasibility_backward">
+<code class="sig-prename descclassname">utility_search.</code><code class="sig-name descname">check_feasibility_backward</code><span class="sig-paren">(</span><em class="sig-param">a_new</em>, <em class="sig-param">v</em>, <em class="sig-param">a_min</em>, <em class="sig-param">a_max</em>, <em class="sig-param">dt</em>, <em class="sig-param">v_max</em>, <em class="sig-param">a_cur</em>, <em class="sig-param">j_min</em>, <em class="sig-param">j_max</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/utility_search.html#check_feasibility_backward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utility_search.check_feasibility_backward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Limits vehicle acceleration to maximum/minimum value - considers velocity and jerk limit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a_new</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – calculated acceleration to reach goal [m/s^2]</p></li>
+<li><p><strong>v</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – current velocity of vehicle [m/s]</p></li>
+<li><p><strong>a_min</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – minimum acceleration of vehicle [m/s^2]</p></li>
+<li><p><strong>a_max</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – maximum acceleration of vehicle [m/s^2]</p></li>
+<li><p><strong>dt</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – time step size [s]</p></li>
+<li><p><strong>v_max</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – maximum possible/allowed velocity of the vehicle [m/s]</p></li>
+<li><p><strong>a_cur</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – current acceleration of the vehicle [m/s^2]</p></li>
+<li><p><strong>j_min</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – minimum jerk of the vehicle [m/s^3]</p></li>
+<li><p><strong>j_max</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – maximum jerk of the vehicle [m/s^3]</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Bounded acceleration as scalar value [m/s^2]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="utility_search.init_nodes_forward">
+<code class="sig-prename descclassname">utility_search.</code><code class="sig-name descname">init_nodes_forward</code><span class="sig-paren">(</span><em class="sig-param">rrt_param</em>, <em class="sig-param">acc_vehicle_param</em>, <em class="sig-param">simulation_param</em>, <em class="sig-param">lead_vehicle_param</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/utility_search.html#init_nodes_forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utility_search.init_nodes_forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize list of nodes for forward search</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rrt_param</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]) – dictionary with RRT parameters</p></li>
+<li><p><strong>acc_vehicle_param</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]) – dictionary with physical parameters of the lead vehicle</p></li>
+<li><p><strong>simulation_param</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]) – dictionary with parameters of the simulation environment</p></li>
+<li><p><strong>lead_vehicle_param</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]) – dictionary with physical parameters of the lead vehicle</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>]</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>list of initial nodes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="utility_search.is_valid_final_node">
+<code class="sig-prename descclassname">utility_search.</code><code class="sig-name descname">is_valid_final_node</code><span class="sig-paren">(</span><em class="sig-param">node</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/utility_search.html#is_valid_final_node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utility_search.is_valid_final_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if unsafe node is in valid range</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code>) – node to validate</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True or False</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../common/modules.html" class="btn btn-neutral float-right" title="Common" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="rrt_forward.html" class="btn btn-neutral float-left" title="Module RRT Forward" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sebastian Maierhofer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

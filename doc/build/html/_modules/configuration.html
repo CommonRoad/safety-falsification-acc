@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>configuration &mdash; ACC Falsification Tool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ACC Falsification Tool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">ACC Falsification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/acc/modules.html">Adaptive Cruise Control Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_collision_avoidance.html">Module Collision Avoidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_extended_pi.html">Module Extended PI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_intelligent_driver_model.html">Module Intelligent Driver Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_interface.html">Module ACC Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_pi.html">Module Simple PI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lead_search/modules.html">Leading Vehicle Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/backward_search.html">Module Backward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/forward_search.html">Module Forward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/monte_carlo_simulation.html">Modul Monte Carlo Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt.html">Module RRT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt_backward.html">Module RRT Backward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt_forward.html">Module RRT Forward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/utility_search.html">Module Utility Functions Search Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/common/modules.html">Common</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/configuration.html">Module Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/node.html">Module Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/state.html">Module State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/utility_fcts.html">Module Utility Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/utility_safety.html">Module Utility Functions Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/output/modules.html">Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/output/visualization.html">Module Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/output/storage.html">Module Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/falsification.html">Module Falsification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/review.html">Module Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/config.html">Module Config</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ACC Falsification Tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for configuration</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">parameters_vehicle1</span> <span class="k">import</span> <span class="n">parameters_vehicle1</span>
+<span class="kn">from</span> <span class="nn">parameters_vehicle2</span> <span class="k">import</span> <span class="n">parameters_vehicle2</span>
+<span class="kn">from</span> <span class="nn">parameters_vehicle3</span> <span class="k">import</span> <span class="n">parameters_vehicle3</span>
+<span class="kn">import</span> <span class="nn">enum</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span> <span class="nn">ruamel.yaml</span>
+
+
+<div class="viewcode-block" id="SamplingStrategy"><a class="viewcode-back" href="../api/common/configuration.html#configuration.SamplingStrategy">[docs]</a><span class="k">class</span> <span class="nc">SamplingStrategy</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum describing different sampling strategies</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">LOCAL</span> <span class="o">=</span> <span class="s2">&quot;local&quot;</span>
+    <span class="n">GLOBAL</span> <span class="o">=</span> <span class="s2">&quot;global&quot;</span></div>
+
+
+<div class="viewcode-block" id="VehicleType"><a class="viewcode-back" href="../api/common/configuration.html#configuration.VehicleType">[docs]</a><span class="k">class</span> <span class="nc">VehicleType</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum describing vehicle types</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">LEAD</span> <span class="o">=</span> <span class="s2">&quot;lead_vehicle&quot;</span>
+    <span class="n">ACC</span> <span class="o">=</span> <span class="s2">&quot;acc_vehicle&quot;</span></div>
+
+
+<div class="viewcode-block" id="ACCController"><a class="viewcode-back" href="../api/common/configuration.html#configuration.ACCController">[docs]</a><span class="k">class</span> <span class="nc">ACCController</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum describing vehicle types</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">IDM</span> <span class="o">=</span> <span class="s2">&quot;idm&quot;</span>
+    <span class="n">COLLISION_AVOIDANCE</span> <span class="o">=</span> <span class="s2">&quot;collision_avoidance&quot;</span>
+    <span class="n">EXTENDED_PI</span> <span class="o">=</span> <span class="s2">&quot;extended_pi&quot;</span>
+    <span class="n">PI</span> <span class="o">=</span> <span class="s2">&quot;pi&quot;</span></div>
+
+
+<div class="viewcode-block" id="SearchType"><a class="viewcode-back" href="../api/common/configuration.html#configuration.SearchType">[docs]</a><span class="k">class</span> <span class="nc">SearchType</span><span class="p">(</span><span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enum describing falsification search types</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">FORWARD</span> <span class="o">=</span> <span class="s2">&quot;forward&quot;</span>
+    <span class="n">BACKWARD</span> <span class="o">=</span> <span class="s2">&quot;backward&quot;</span>
+    <span class="n">MONTE_CARLO</span> <span class="o">=</span> <span class="s2">&quot;monte_carlo&quot;</span></div>
+
+
+<div class="viewcode-block" id="create_sim_param"><a class="viewcode-back" href="../api/common/configuration.html#configuration.create_sim_param">[docs]</a><span class="k">def</span> <span class="nf">create_sim_param</span><span class="p">(</span><span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update simulation parameters</span>
+
+<span class="sd">    :param simulation_param: dictionary with parameters of the simulation environment</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;search_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;forward&quot;</span><span class="p">:</span>
+        <span class="n">simulation_param</span><span class="p">[</span><span class="s2">&quot;search_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SearchType</span><span class="o">.</span><span class="n">FORWARD</span>
+    <span class="k">elif</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;search_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;backward&quot;</span><span class="p">:</span>
+        <span class="n">simulation_param</span><span class="p">[</span><span class="s2">&quot;search_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SearchType</span><span class="o">.</span><span class="n">BACKWARD</span>
+    <span class="k">elif</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;search_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;monte_carlo&quot;</span><span class="p">:</span>
+        <span class="n">simulation_param</span><span class="p">[</span><span class="s2">&quot;search_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SearchType</span><span class="o">.</span><span class="n">MONTE_CARLO</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Wrong search type in config file defined.&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">simulation_param</span></div>
+
+
+<div class="viewcode-block" id="create_rrt_param"><a class="viewcode-back" href="../api/common/configuration.html#configuration.create_rrt_param">[docs]</a><span class="k">def</span> <span class="nf">create_rrt_param</span><span class="p">(</span><span class="n">rrt_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update RRT parameters</span>
+
+<span class="sd">    :param rrt_param: dictionary with RRT parameters</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">rrt_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sampling_strategy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;local&quot;</span><span class="p">:</span>
+        <span class="n">rrt_param</span><span class="p">[</span><span class="s2">&quot;sampling_strategy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SamplingStrategy</span><span class="o">.</span><span class="n">LOCAL</span>
+    <span class="k">elif</span> <span class="n">rrt_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sampling_strategy&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;global&quot;</span><span class="p">:</span>
+        <span class="n">rrt_param</span><span class="p">[</span><span class="s2">&quot;sampling_strategy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SamplingStrategy</span><span class="o">.</span><span class="n">GLOBAL</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Wrong sampling strategy in config file defined.&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">rrt_param</span></div>
+
+
+<div class="viewcode-block" id="create_acc_vehicle_param"><a class="viewcode-back" href="../api/common/configuration.html#configuration.create_acc_vehicle_param">[docs]</a><span class="k">def</span> <span class="nf">create_acc_vehicle_param</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update ACC vehicle parameters</span>
+
+<span class="sd">    :param acc_vehicle_param: dictionary with physical parameters of the ACC vehicle</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;controller&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;idm&quot;</span><span class="p">:</span>
+        <span class="n">acc_vehicle_param</span><span class="p">[</span><span class="s2">&quot;controller&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ACCController</span><span class="o">.</span><span class="n">IDM</span>
+    <span class="k">elif</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;controller&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;collision_avoidance&quot;</span><span class="p">:</span>
+        <span class="n">acc_vehicle_param</span><span class="p">[</span><span class="s2">&quot;controller&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ACCController</span><span class="o">.</span><span class="n">COLLISION_AVOIDANCE</span>
+    <span class="k">elif</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;controller&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;extended_pi&quot;</span><span class="p">:</span>
+        <span class="n">acc_vehicle_param</span><span class="p">[</span><span class="s2">&quot;controller&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ACCController</span><span class="o">.</span><span class="n">EXTENDED_PI</span>
+    <span class="k">elif</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;controller&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;pi&quot;</span><span class="p">:</span>
+        <span class="n">acc_vehicle_param</span><span class="p">[</span><span class="s2">&quot;controller&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ACCController</span><span class="o">.</span><span class="n">PI</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Wrong ACC controller in config file defined.&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;vehicle_number&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">acc_vehicle_param</span><span class="p">[</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters_vehicle1</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;vehicle_number&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">acc_vehicle_param</span><span class="p">[</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters_vehicle2</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;vehicle_number&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">acc_vehicle_param</span><span class="p">[</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters_vehicle3</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Wrong vehicle number for ACC vehicle in config file defined.&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">acc_vehicle_param</span></div>
+
+
+<div class="viewcode-block" id="create_lead_vehicle_param"><a class="viewcode-back" href="../api/common/configuration.html#configuration.create_lead_vehicle_param">[docs]</a><span class="k">def</span> <span class="nf">create_lead_vehicle_param</span><span class="p">(</span><span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update lead vehicle parameters</span>
+
+<span class="sd">    :param lead_vehicle_param: dictionary with physical parameters of the leading vehicle</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;vehicle_number&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">lead_vehicle_param</span><span class="p">[</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters_vehicle1</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;vehicle_number&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">lead_vehicle_param</span><span class="p">[</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters_vehicle2</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;vehicle_number&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">lead_vehicle_param</span><span class="p">[</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">parameters_vehicle3</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Wrong vehicle number for leading vehicle in config file defined.&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">lead_vehicle_param</span></div>
+
+
+<div class="viewcode-block" id="create_acc_param"><a class="viewcode-back" href="../api/common/configuration.html#configuration.create_acc_param">[docs]</a><span class="k">def</span> <span class="nf">create_acc_param</span><span class="p">(</span><span class="n">controller_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">controller</span><span class="p">:</span> <span class="n">ACCController</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update ACC controller parameters</span>
+
+<span class="sd">    :param controller_param: list of dictionaries with ACC parameter</span>
+<span class="sd">    :param controller: enum value for ACC controller</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">name_selected_controller</span> <span class="o">=</span> <span class="n">controller</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">for</span> <span class="n">controller_name</span><span class="p">,</span> <span class="n">controller</span> <span class="ow">in</span> <span class="n">controller_param</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">controller_name</span> <span class="o">==</span> <span class="n">name_selected_controller</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">controller</span>
+
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Matching of controller parameters to defined controller not possible.&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_yaml"><a class="viewcode-back" href="../api/common/configuration.html#configuration.load_yaml">[docs]</a><span class="k">def</span> <span class="nf">load_yaml</span><span class="p">(</span><span class="n">file_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Dict</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Loads configuration setup from a yaml file</span>
+
+<span class="sd">    :param file_name: name of the yaml file</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">stream</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">config</span> <span class="o">=</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">round_trip_load</span><span class="p">(</span><span class="n">stream</span><span class="p">,</span> <span class="n">preserve_quotes</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">config</span>
+        <span class="k">except</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">YAMLError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">ruamel</span><span class="o">.</span><span class="n">yaml</span><span class="o">.</span><span class="n">YAMLError</span></div>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sebastian Maierhofer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

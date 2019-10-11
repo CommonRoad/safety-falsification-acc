@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>review &mdash; ACC Falsification Tool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ACC Falsification Tool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">ACC Falsification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/acc/modules.html">Adaptive Cruise Control Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_collision_avoidance.html">Module Collision Avoidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_extended_pi.html">Module Extended PI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_intelligent_driver_model.html">Module Intelligent Driver Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_interface.html">Module ACC Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_pi.html">Module Simple PI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lead_search/modules.html">Leading Vehicle Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/backward_search.html">Module Backward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/forward_search.html">Module Forward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/monte_carlo_simulation.html">Modul Monte Carlo Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt.html">Module RRT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt_backward.html">Module RRT Backward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt_forward.html">Module RRT Forward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/utility_search.html">Module Utility Functions Search Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/common/modules.html">Common</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/configuration.html">Module Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/node.html">Module Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/state.html">Module State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/utility_fcts.html">Module Utility Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/utility_safety.html">Module Utility Functions Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/output/modules.html">Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/output/visualization.html">Module Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/output/storage.html">Module Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/falsification.html">Module Falsification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/review.html">Module Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/config.html">Module Config</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ACC Falsification Tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>review</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for review</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Execution of stored results.</span>
+<span class="sd">You must provide an input parameter to the script (e.g., &quot;python review.py xyz&quot;, where the solution files are called config_xzy.yaml and trajectory_xyz.pkl).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">common.node</span> <span class="k">import</span> <span class="n">Node</span>
+<span class="kn">from</span> <span class="nn">acc.acc_interface</span> <span class="k">import</span> <span class="n">AccFactory</span>
+<span class="kn">from</span> <span class="nn">lead_search.rrt_forward</span> <span class="k">import</span> <span class="n">RRTForward</span>
+<span class="kn">from</span> <span class="nn">common.utility_fcts</span> <span class="k">import</span> <span class="n">check_feasibility</span><span class="p">,</span> <span class="n">forward_simulation</span><span class="p">,</span> <span class="n">acc_input_forward</span>
+<span class="kn">from</span> <span class="nn">common.state</span> <span class="k">import</span> <span class="n">State</span>
+<span class="kn">from</span> <span class="nn">output.storage</span> <span class="k">import</span> <span class="n">create_commonroad_scenario</span>
+<span class="kn">from</span> <span class="nn">output.visualization</span> <span class="k">import</span> <span class="n">plot_figures</span>
+<span class="kn">from</span> <span class="nn">common.configuration</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+
+
+<div class="viewcode-block" id="main"><a class="viewcode-back" href="../api/review.html#review.main">[docs]</a><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">solution_file_suffix</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+        <span class="n">solution_file_suffix</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution file suffix missing!&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span>
+
+    <span class="c1"># load configuration and trajectory of leading vehicle</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">load_yaml</span><span class="p">(</span><span class="s2">&quot;config_&quot;</span> <span class="o">+</span> <span class="n">solution_file_suffix</span> <span class="o">+</span> <span class="s2">&quot;.yaml&quot;</span><span class="p">)</span>
+    <span class="n">simulation_param</span> <span class="o">=</span> <span class="n">create_sim_param</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;simulation_param&quot;</span><span class="p">))</span>
+    <span class="n">lead_vehicle_param</span> <span class="o">=</span> <span class="n">create_lead_vehicle_param</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lead_vehicle_param&quot;</span><span class="p">))</span>
+    <span class="n">acc_vehicle_param</span> <span class="o">=</span> <span class="n">create_acc_vehicle_param</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;acc_vehicle_param&quot;</span><span class="p">))</span>
+    <span class="n">rrt_param</span> <span class="o">=</span> <span class="n">create_rrt_param</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;rrt_param&quot;</span><span class="p">))</span>
+    <span class="n">acc_param</span> <span class="o">=</span> <span class="n">create_acc_param</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;acc_param&quot;</span><span class="p">),</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;controller&quot;</span><span class="p">))</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;trajectory_&quot;</span> <span class="o">+</span> <span class="n">solution_file_suffix</span> <span class="o">+</span> <span class="s2">&quot;.pkl&quot;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">lead_inputs</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+    <span class="c1"># Initialize vehicle planners</span>
+    <span class="n">lead_planner</span> <span class="o">=</span> <span class="n">RRTForward</span><span class="p">(</span><span class="n">simulation_param</span><span class="p">,</span> <span class="n">rrt_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">)</span>
+    <span class="n">acc_planner</span> <span class="o">=</span> <span class="n">AccFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">simulation_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">acc_param</span><span class="p">)</span>
+
+    <span class="c1"># Initialize states and node list</span>
+    <span class="n">node_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">acc_state</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;s_init&quot;</span><span class="p">),</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;v_init&quot;</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                      <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_init&quot;</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">lead_state</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;s_init&quot;</span><span class="p">),</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;v_init&quot;</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                       <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_init&quot;</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">current_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">lead_state</span><span class="p">,</span> <span class="n">acc_state</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">)</span>
+
+    <span class="c1"># Initialization of variables for simulation</span>
+    <span class="n">collision</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">unsafe</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_node</span><span class="p">)</span>
+    <span class="n">t_react_acc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;t_react&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Start of simulation</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lead_inputs</span><span class="p">)):</span>
+        <span class="c1"># Plan the ACC trajectory based on the selected controller</span>
+        <span class="n">acc_state</span> <span class="o">=</span> <span class="n">acc_input_forward</span><span class="p">(</span><span class="n">acc_planner</span><span class="p">,</span> <span class="n">current_node</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span>
+                                      <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">t_react_acc</span><span class="p">,</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">))</span>
+
+        <span class="c1"># Forward simulation of the leading vehicle</span>
+        <span class="n">acceleration</span> <span class="o">=</span> <span class="n">check_feasibility</span><span class="p">(</span><span class="n">lead_inputs</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">current_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span>
+                                         <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_min&quot;</span><span class="p">),</span>
+                                         <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_max&quot;</span><span class="p">),</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">),</span>
+                                         <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">longitudinal</span><span class="o">.</span><span class="n">v_max</span><span class="p">,</span>
+                                         <span class="n">current_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">acceleration</span><span class="p">,</span>
+                                         <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_min&quot;</span><span class="p">),</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_max&quot;</span><span class="p">))</span>
+
+        <span class="n">new_node</span> <span class="o">=</span> <span class="n">lead_planner</span><span class="o">.</span><span class="n">forward_simulation</span><span class="p">(</span><span class="n">lead_inputs</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">acceleration</span><span class="p">,</span> <span class="n">current_node</span><span class="p">,</span> <span class="n">acc_state</span><span class="p">,</span>
+                                                   <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span>  <span class="n">simulation_param</span><span class="p">)</span>
+
+        <span class="c1"># Check if collision occurred, if yes stop simulation</span>
+        <span class="n">current_node</span> <span class="o">=</span> <span class="n">new_node</span>
+        <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_node</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">new_node</span><span class="o">.</span><span class="n">delta_s</span> <span class="o">&lt;=</span> <span class="n">new_node</span><span class="o">.</span><span class="n">unsafe_distance</span><span class="p">:</span>
+            <span class="n">unsafe</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;unsafe distance&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_node</span><span class="o">.</span><span class="n">delta_s</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">collision</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;collision&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+
+    <span class="c1"># If lead profile terminates in unsafe state, continue with full braking</span>
+    <span class="k">while</span> <span class="n">unsafe</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">collision</span><span class="p">:</span>
+        <span class="c1"># Plan the ACC trajectory based on the selecte controller</span>
+        <span class="n">acc_state</span> <span class="o">=</span> <span class="n">acc_input_forward</span><span class="p">(</span><span class="n">acc_planner</span><span class="p">,</span> <span class="n">current_node</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span>
+                                      <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">t_react_acc</span><span class="p">,</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">))</span>
+
+        <span class="c1"># Forward simulation of the lead vehicle</span>
+        <span class="n">acceleration</span> <span class="o">=</span> <span class="n">check_feasibility</span><span class="p">(</span><span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_min&quot;</span><span class="p">),</span> <span class="n">current_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span>
+                                         <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_min&quot;</span><span class="p">),</span>
+                                         <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_max&quot;</span><span class="p">),</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">),</span>
+                                         <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">longitudinal</span><span class="o">.</span><span class="n">v_max</span><span class="p">,</span>
+                                         <span class="n">current_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">acceleration</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_min&quot;</span><span class="p">),</span>
+                                         <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_max&quot;</span><span class="p">))</span>
+
+        <span class="n">new_node</span> <span class="o">=</span> <span class="n">lead_planner</span><span class="o">.</span><span class="n">forward_simulation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">,</span> <span class="n">current_node</span><span class="p">,</span> <span class="n">acc_state</span><span class="p">,</span>
+                                                   <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">)</span>
+
+        <span class="c1"># Check if collision occurred, if yes stop simulation</span>
+        <span class="n">current_node</span> <span class="o">=</span> <span class="n">new_node</span>
+        <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_node</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_node</span><span class="o">.</span><span class="n">delta_s</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;collision&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+
+    <span class="c1"># Print results / create CommonRoad scenario / store videos</span>
+    <span class="n">create_commonroad_scenario</span><span class="p">(</span><span class="n">current_node</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">)</span>
+    <span class="n">plot_figures</span><span class="p">([</span><span class="n">current_node</span><span class="p">],</span> <span class="n">simulation_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">)</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sebastian Maierhofer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

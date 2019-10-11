@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>backward_search &mdash; ACC Falsification Tool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ACC Falsification Tool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">ACC Falsification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/acc/modules.html">Adaptive Cruise Control Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_collision_avoidance.html">Module Collision Avoidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_extended_pi.html">Module Extended PI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_intelligent_driver_model.html">Module Intelligent Driver Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_interface.html">Module ACC Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_pi.html">Module Simple PI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lead_search/modules.html">Leading Vehicle Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/backward_search.html">Module Backward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/forward_search.html">Module Forward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/monte_carlo_simulation.html">Modul Monte Carlo Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt.html">Module RRT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt_backward.html">Module RRT Backward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt_forward.html">Module RRT Forward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/utility_search.html">Module Utility Functions Search Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/common/modules.html">Common</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/configuration.html">Module Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/node.html">Module Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/state.html">Module State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/utility_fcts.html">Module Utility Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/utility_safety.html">Module Utility Functions Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/output/modules.html">Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/output/visualization.html">Module Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/output/storage.html">Module Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/falsification.html">Module Falsification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/review.html">Module Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/config.html">Module Config</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ACC Falsification Tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>backward_search</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for backward_search</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">acc.acc_interface</span> <span class="k">import</span> <span class="n">AccFactory</span>
+<span class="kn">from</span> <span class="nn">lead_search.rrt_backward</span> <span class="k">import</span> <span class="n">RRTBackward</span>
+<span class="kn">from</span> <span class="nn">lead_search.rrt_forward</span> <span class="k">import</span> <span class="n">RRTForward</span>
+<span class="kn">from</span> <span class="nn">common.state</span> <span class="k">import</span> <span class="n">State</span>
+<span class="kn">from</span> <span class="nn">common.node</span> <span class="k">import</span> <span class="n">Node</span>
+<span class="kn">from</span> <span class="nn">common.utility_fcts</span> <span class="k">import</span> <span class="n">check_feasibility</span><span class="p">,</span> <span class="n">forward_simulation</span><span class="p">,</span> <span class="n">acc_input_forward</span>
+<span class="kn">from</span> <span class="nn">output.storage</span> <span class="k">import</span> <span class="n">store_results</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">timeit</span> <span class="k">import</span> <span class="n">default_timer</span> <span class="k">as</span> <span class="n">timer</span>
+<span class="kn">from</span> <span class="nn">lead_search.utility_search</span> <span class="k">import</span> <span class="n">check_feasibility_backward</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+
+<div class="viewcode-block" id="check_unsafe_node_reached"><a class="viewcode-back" href="../api/lead_search/backward_search.html#backward_search.check_unsafe_node_reached">[docs]</a><span class="k">def</span> <span class="nf">check_unsafe_node_reached</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">rrt_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+                              <span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_planner</span><span class="p">:</span> <span class="n">AccFactory</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Evaluate if unsafe node is reached after forward simulation and if goal node is valid</span>
+
+<span class="sd">    :param node: starting node for forward simulation</span>
+<span class="sd">    :param simulation_param: dictionary with parameters of the simulation environment</span>
+<span class="sd">    :param rrt_param: rrt_param: dictionary with RRT parameters</span>
+<span class="sd">    :param lead_vehicle_param: dictionary with physical parameters of the lead vehicle</span>
+<span class="sd">    :param acc_vehicle_param: dictionary with physical parameters of the ACC vehicle</span>
+<span class="sd">    :param acc_planner: ACC planning algorithm</span>
+<span class="sd">    :return: valid unsafe node, initial safe node</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">)</span>
+    <span class="n">t_react_acc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;t_react&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">current_node</span> <span class="o">=</span> <span class="n">node</span>
+    <span class="n">lead_planner</span> <span class="o">=</span> <span class="n">RRTForward</span><span class="p">(</span><span class="n">simulation_param</span><span class="p">,</span> <span class="n">rrt_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">)</span>
+    <span class="n">lead_profile</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Check if initial node is safe</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">safe_distance</span> <span class="o">&lt;</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_s</span><span class="p">:</span>
+        <span class="n">initial_node_safe</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">initial_node_safe</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">while</span> <span class="n">current_node</span><span class="o">.</span><span class="n">parent</span><span class="p">:</span>
+        <span class="n">lead_profile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">acceleration</span><span class="p">)</span>
+        <span class="n">current_node</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">.</span><span class="n">parent</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lead_profile</span><span class="p">)):</span>
+        <span class="c1"># Plan the ACC trajectory based on the selected controller</span>
+        <span class="n">acc_state</span> <span class="o">=</span> <span class="n">acc_input_forward</span><span class="p">(</span><span class="n">acc_planner</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">t_react_acc</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+
+        <span class="c1"># Forward simulation of lead vehicle</span>
+        <span class="n">a_new</span> <span class="o">=</span> <span class="n">check_feasibility</span><span class="p">(</span><span class="n">lead_profile</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span>
+                                  <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_min&quot;</span><span class="p">),</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_max&quot;</span><span class="p">),</span>
+                                  <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">),</span>
+                                  <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">longitudinal</span><span class="o">.</span><span class="n">v_max</span><span class="p">,</span>
+                                  <span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">acceleration</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_min&quot;</span><span class="p">),</span>
+                                  <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_max&quot;</span><span class="p">))</span>
+
+        <span class="n">node</span> <span class="o">=</span> <span class="n">lead_planner</span><span class="o">.</span><span class="n">forward_simulation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_new</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">acc_state</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span>
+                                               <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">)</span>
+
+    <span class="c1"># Check if safe distance is violated and if collision is valid in case initial node was safe</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_s</span> <span class="o">&lt;=</span> <span class="n">node</span><span class="o">.</span><span class="n">unsafe_distance</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="n">initial_node_safe</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="n">initial_node_safe</span></div>
+
+
+<div class="viewcode-block" id="init_nodes_backward"><a class="viewcode-back" href="../api/lead_search/backward_search.html#backward_search.init_nodes_backward">[docs]</a><span class="k">def</span> <span class="nf">init_nodes_backward</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+                        <span class="n">rrt_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Evaluate if unsafe node is reached after forward simulation and if goal node is valid</span>
+
+<span class="sd">    :param acc_vehicle_param: dictionary with physical parameters of the ACC vehicle</span>
+<span class="sd">    :param lead_vehicle_param: dictionary with physical parameters of the lead vehicle</span>
+<span class="sd">    :param simulation_param: dictionary with parameters of the simulation environment</span>
+<span class="sd">    :param rrt_param: dictionary with RRT parameters</span>
+<span class="sd">    :return: list of new nodes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">new_node_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_node_list</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">rrt_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;number_nodes&quot;</span><span class="p">):</span>
+        <span class="n">v_lead</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">longitudinal</span><span class="o">.</span><span class="n">v_max</span><span class="p">)</span>
+        <span class="n">v_acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">longitudinal</span><span class="o">.</span><span class="n">v_max</span><span class="p">)</span>
+        <span class="n">a_lead</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_min&quot;</span><span class="p">),</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_max&quot;</span><span class="p">))</span>
+        <span class="n">a_acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_min&quot;</span><span class="p">),</span>  <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_max&quot;</span><span class="p">))</span>
+        <span class="n">s_x_lead</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">l</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span>
+                                     <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">l</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+                                     <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">l</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span>
+                                     <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">l</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span>
+                                     <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;delta_s_init_max&quot;</span><span class="p">))</span>
+        <span class="n">acc_state</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v_acc</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">a_acc</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">lead_state</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="n">s_x_lead</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v_lead</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">a_lead</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">new_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">lead_state</span><span class="p">,</span> <span class="n">acc_state</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">)</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">new_node</span><span class="o">.</span><span class="n">unsafe_distance</span> <span class="o">-</span> <span class="n">new_node</span><span class="o">.</span><span class="n">delta_s</span> <span class="o">&lt;=</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;s_safe_init_backward&quot;</span><span class="p">):</span>
+            <span class="n">new_node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_node</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+    <span class="k">return</span> <span class="n">new_node_list</span></div>
+
+
+<div class="viewcode-block" id="acc_random_backward"><a class="viewcode-back" href="../api/lead_search/backward_search.html#backward_search.acc_random_backward">[docs]</a><span class="k">def</span> <span class="nf">acc_random_backward</span><span class="p">(</span><span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">],</span> <span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">State</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initialize list of nodes for forward search</span>
+
+<span class="sd">    :param node_list: list of nodes at time step t</span>
+<span class="sd">    :param acc_vehicle_param: dictionary with physical parameters of the ACC vehicle</span>
+<span class="sd">    :param dt: time step size [s]</span>
+<span class="sd">    :return: list of acc states at time step t-1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">acc_state_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_list</span><span class="p">):</span>
+        <span class="n">s_x_acc</span><span class="p">,</span> <span class="n">v_acc</span><span class="p">,</span> <span class="n">a_acc</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">x_position</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span> \
+                                <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">acceleration</span> <span class="o">-</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_max&quot;</span><span class="p">),</span>
+                                                  <span class="n">node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">acceleration</span> <span class="o">-</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_min&quot;</span><span class="p">))</span>
+        <span class="n">a_acc</span> <span class="o">=</span> <span class="n">check_feasibility_backward</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">a_acc</span><span class="p">,</span> <span class="n">v_acc</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_min&quot;</span><span class="p">),</span>
+                                           <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_max&quot;</span><span class="p">),</span> <span class="n">dt</span><span class="p">,</span>
+                                           <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">longitudinal</span><span class="o">.</span><span class="n">v_max</span><span class="p">,</span>
+                                           <span class="n">node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">acceleration</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_min&quot;</span><span class="p">),</span>
+                                           <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_max&quot;</span><span class="p">))</span>
+
+        <span class="c1"># state of the following vehicle at time step t - 1</span>
+        <span class="n">new_acc_position</span> <span class="o">=</span> <span class="n">s_x_acc</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">a_acc</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">v_acc</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+        <span class="n">new_acc_velocity</span> <span class="o">=</span> <span class="n">v_acc</span> <span class="o">+</span> <span class="n">a_acc</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="n">acc_state</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="n">new_acc_position</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">y_position</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">steering_angle</span><span class="p">,</span>
+                          <span class="n">new_acc_velocity</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">yaw_angle</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">a_acc</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">time_step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">acc_state_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">acc_state</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">acc_state_list</span></div>
+
+
+<div class="viewcode-block" id="is_valid_initial_node"><a class="viewcode-back" href="../api/lead_search/backward_search.html#backward_search.is_valid_initial_node">[docs]</a><span class="k">def</span> <span class="nf">is_valid_initial_node</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validate if current node is a valid solution</span>
+
+<span class="sd">    :param node: node to evaluate</span>
+<span class="sd">    return boolean indicating if node is a valid initial node</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">safe_distance</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">collision</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_s</span> <span class="o">&gt;</span> <span class="n">node</span><span class="o">.</span><span class="n">safe_distance</span><span class="p">:</span>
+        <span class="n">safe_distance</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_s</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">collision</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">safe_distance</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">collision</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="search"><a class="viewcode-back" href="../api/lead_search/backward_search.html#backward_search.search">[docs]</a><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">rrt_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+           <span class="n">acc_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_param_all_controllers</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Backward search using RRT</span>
+
+<span class="sd">    :param rrt_param: dictionary with RRT parameters</span>
+<span class="sd">    :param acc_vehicle_param: dictionary with physical parameters of the ACC vehicle</span>
+<span class="sd">    :param simulation_param: dictionary with parameters of the simulation environment</span>
+<span class="sd">    :param lead_vehicle_param: dictionary with physical parameters of the leading vehicle</span>
+<span class="sd">    :param acc_param: dictionary with parameters of selected ACC controller</span>
+<span class="sd">    :param acc_param_all_controllers: dictionary with parameter dictionaries for each ACC controller</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Load simulation parameter</span>
+    <span class="n">number_nodes_rrt</span> <span class="o">=</span> <span class="n">rrt_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;number_nodes&quot;</span><span class="p">)</span>
+    <span class="n">num_iterations</span> <span class="o">=</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;num_iterations&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Initialize vehicle planners</span>
+    <span class="n">lead_planner</span> <span class="o">=</span> <span class="n">RRTBackward</span><span class="p">(</span><span class="n">simulation_param</span><span class="p">,</span> <span class="n">rrt_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">)</span>
+    <span class="n">acc_planner</span> <span class="o">=</span> <span class="n">AccFactory</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">simulation_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">acc_param</span><span class="p">)</span>
+
+    <span class="c1"># Initialize lists for nodes</span>
+    <span class="n">node_list</span> <span class="o">=</span> <span class="n">init_nodes_backward</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">,</span> <span class="n">rrt_param</span><span class="p">)</span>
+
+    <span class="c1"># Initialization of variables for simulation</span>
+    <span class="n">valid_initial_node</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">solution_node</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">max_time_elapsed</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">unsafe_node_reached</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># Start of simulation</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iterations</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;verbose_mode&quot;</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iteration: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="c1"># Initialize node lists</span>
+        <span class="n">new_node_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">node_calculation_time</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
+        <span class="n">acc_state_list</span> <span class="o">=</span> <span class="n">acc_random_backward</span><span class="p">(</span><span class="n">node_list</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">))</span>
+
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_node_list</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">number_nodes_rrt</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">max_time_elapsed</span><span class="p">:</span>
+            <span class="c1"># prevent dead end of backward search</span>
+            <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">node_calculation_time</span> <span class="o">-</span> <span class="n">timer</span><span class="p">())</span> <span class="o">&gt;</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;max_comp_time_backward&quot;</span><span class="p">):</span>
+                <span class="n">max_time_elapsed</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;maximum time elapsed&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+
+            <span class="c1"># Calculate lead vehicle backward state</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">lead_planner</span><span class="o">.</span><span class="n">plan</span><span class="p">(</span><span class="n">node_list</span><span class="p">,</span> <span class="n">acc_state_list</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span>
+                                     <span class="n">simulation_param</span><span class="p">)</span>
+
+            <span class="c1"># Simulate ACC-vehicle forward based on sampled backward input</span>
+            <span class="n">a_acc</span> <span class="o">=</span> <span class="n">acc_planner</span><span class="o">.</span><span class="n">acc_control</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span>
+                                            <span class="n">node</span><span class="o">.</span><span class="n">get_lead_x_position_rear</span><span class="p">(</span><span class="n">lead_vehicle_param</span><span class="p">),</span>
+                                            <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">get_acc_x_position_front</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="p">),</span>
+                                            <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">acceleration</span><span class="p">)</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_acc</span><span class="p">]</span>
+            <span class="n">state_acc</span> <span class="o">=</span> <span class="n">forward_simulation</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">x_position</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">y_position</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                           <span class="n">node</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">),</span>
+                                           <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">),</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">))</span>
+
+            <span class="n">new_acc_state</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="n">state_acc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">state_acc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">state_acc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">state_acc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span> <span class="n">state_acc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">4</span><span class="p">],</span>
+                                  <span class="mi">0</span><span class="p">,</span> <span class="n">a_acc</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">time_step</span><span class="p">)</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">add_acc_state</span><span class="p">(</span><span class="n">new_acc_state</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">)</span>
+
+            <span class="c1"># check for valid initial state and if unsafe state will be reached from this state</span>
+            <span class="n">unsafe_node_reached</span><span class="p">,</span> <span class="n">valid_initial_node</span> <span class="o">=</span> <span class="n">check_unsafe_node_reached</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">,</span> <span class="n">rrt_param</span><span class="p">,</span>
+                                                                                <span class="n">lead_vehicle_param</span><span class="p">,</span>
+                                                                                <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">acc_planner</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">velocity</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">unsafe_node_reached</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="n">new_node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">unsafe_node_reached</span> <span class="ow">and</span> <span class="n">valid_initial_node</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;valid initial node reached&quot;</span><span class="p">)</span>
+                <span class="n">solution_node</span> <span class="o">=</span> <span class="n">new_node_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">solution</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">break</span>
+
+        <span class="n">node_list</span> <span class="o">=</span> <span class="n">new_node_list</span>
+
+        <span class="c1"># Evaluate if solution was found</span>
+        <span class="k">if</span> <span class="n">unsafe_node_reached</span> <span class="ow">and</span> <span class="n">valid_initial_node</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">elif</span> <span class="n">max_time_elapsed</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">if</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;store_results&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">unsafe_node_reached</span> <span class="ow">and</span> <span class="n">valid_initial_node</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">solution_node</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">solution_node</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_list</span><span class="p">))]</span>
+        <span class="n">store_results</span><span class="p">(</span><span class="n">solution_node</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">rrt_param</span><span class="p">,</span>
+                      <span class="n">acc_param_all_controllers</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">solution</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sebastian Maierhofer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

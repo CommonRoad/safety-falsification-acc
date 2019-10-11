@@ -1,0 +1,184 @@
+
+# simulation parameters
+###
+# .. code-block:: yaml
+#
+#    - search_type: search method; possible options are forward, backward, or monte_carlo
+#    - num_iterations: number of iteration steps (simulation time = num_iteration * dt)
+#    - dt: time step size
+#    - v_col: required impact velocity at collision
+#    - max_comp_time_backward: maximum computation time for an iteration in order to prevent dead ends during backward search
+#    - s_safe_init_backward: maximum initial safe distance violation for backward search
+#    - store_results: set to true if the results should be stored in case if no valid solution is found
+#    - delta_s_init_min: initial minimum distance for the forward simulation
+#    - delta_s_init_max: initial maximum distance for the forward simulation
+#    - commonroad_benchmark_id: CommonRoad solution file name
+#    - commonroad_scenario_author: Names of the authors of the created scenario
+#    - commonroad_scenario_tags: tags for the generated CommonRoad scenario describing properties of the scenario
+#    - verbose_mode: boolean which indicates if additional information should be printed to console
+simulation_param:
+    search_type: forward
+    num_iterations: 10000
+    dt: 0.1
+    v_col: 0.0
+    max_comp_time_backward: 1500
+    s_safe_init_backward: 1
+    store_results: true
+    delta_s_init_min: 2
+    delta_s_init_max: 50
+    commonroad_benchmark_id: ZAM_ACC-2_1_T-1
+    commonroad_scenario_author: Markus Koschi, Christian Pek, Sebastian Maierhofer
+    commonroad_scenario_tags: highway single_lane no_oncoming_traffic parallel_lanes lane_following evasive
+    verbose_mode: True
+
+# RRT parameters
+###
+# .. code-block:: yaml
+#
+#   - sampling_strategy: sampling strategy; possible options are local or global for sampling in local or global coordinates, respectively
+#   - number_nodes: number of nodes created in each iteration
+#   - add_sample_range_global_forward: extension of sampling range for global sampling in forward search [x_min, x_max, v_min, v_max]
+#   - add_sample_range_global_backward: extension of sampling range for global sampling in backward search [x_min, x_max, v_min, v_max]
+#   - add_sample_range_local_forward:  extension of sampling range for local sampling in forward search [x_min, x_max, v_min, v_max]
+#   - add_sample_range_local_backward: extension of sampling range for local sampling in backward search [x_min, x_max, v_min, v_max]
+#   - mcs_beta_a: parameter for beta distribution in Monte Carlo simulation
+#   - mcs_beta_b: parameter for beta distribution in Monte Carlo simulation
+rrt_param:
+    sampling_strategy: local
+    number_nodes: 250
+    add_sample_range_global_forward: [0, 0, 0, 0]
+    add_sample_range_global_backward: [0, 0, 0, 0]
+    add_sample_range_local_forward: [0, 0, 0, 0]
+    add_sample_range_local_backward: [0, 0, 0, 0]
+    mcs_beta_a: 2
+    mcs_beta_b: 2
+
+# ACC vehicle parameters
+###
+# .. code-block:: yaml
+#
+#    - controller: ACC system name; possible options are idm, collision_avoidance, extended_pi, or pi or your own ACC-controller
+#    - vehicle_number: CommonRoad vehicle number; possible options are 1, 2 or 3 (see CommonRoad vehicle models)
+#    - s_init: initial x-position of ACC vehicle
+#    - v_init: initial velocity of ACC vehicle
+#    - a_init: initial acceleration of ACC vehicle
+#    - a_max: maximum acceleration of ACC vehicle
+#    - a_min: minimum acceleration of ACC vehicle
+#    - j_max: maximum jerk of ACC vehicle
+#    - j_min: minimum jerk of ACC vehicle
+#    - v_des: desired velocity of ACC vehicle
+#    - t_react: reaction time of ACC vehicle
+#    - dynamics_param: physical parameters of ACC vehicle; will be initialized during runtime
+acc_vehicle_param:
+    controller: pi
+    vehicle_number: 2
+    s_init: 0
+    v_init: 0
+    a_init: 0
+    a_max: 1.5
+    a_min: -8
+    j_max: 10
+    j_min: -10
+    v_des: 30
+    t_react: 0.0
+    dynamics_param: None
+
+# Lead vehicle parameters
+###
+# .. code-block:: yaml
+#
+#    - vehicle_number: CommonRoad vehicle number; possible options are 1, 2 or 3 (see CommonRoad vehicle models)
+#    - s_init: initial x-position of leading vehicle, only used for review.py
+#    - v_init: initial velocity of leading vehicle, only used for review.py
+#    - a_init: initial acceleration of leading vehicle
+#    - a_max: maximum acceleration of leading vehicle
+#    - a_min: minimum acceleration of leading vehicle
+#    - j_max: maximum jerk of leading vehicle
+#    - j_min: minimum jerk of leading vehicle
+#    - v_des: desired velocity of leading vehicle
+#    - t_react: reaction time of leading vehicle
+#    - dynamics_param: physical parameters of leading vehicle; will be initialized during runtime
+lead_vehicle_param:
+    vehicle_number: 2
+    s_init: 0
+    v_init: 0
+    a_init: 0
+    a_max: 1.5
+    a_min: -8.0
+    j_max: 10
+    j_min: -10
+    v_des: 30
+    dynamics_param: None
+
+# ACC system parameters
+###
+#    - PI ACC based on Yanakiev and Kanellakopoulos: "Nonlinear Spacing Policies for Automated Heavy-Duty Vehicles"
+#    - Collision Avoidance ACC based on Mullakkal-Babu et al.: "Design and analysis of Full Range Adaptive Cruise Control with integrated collision avoidance strategy"
+#    - Extendend PI ACC based on ﻿H. Winner, S. Hakuli, and F. Lotz: "Handbuch Fahrerassistenzsysteme: Grundlagen, Komponenten und Systeme für aktive Sicherheit und Komfort"
+#    - IDM ACC based on ﻿A. Kesting, M. Treiber, M. Schönhof, and D. Helbing: “Adaptive cruise control design for active congestion avoidance”
+acc_param:
+    # PI ACC parameters
+    ###
+    # .. code-block:: yaml
+    #
+    #    - delta_s_min: minimum distance to leading vehicle
+    #    - k1: feedback coefficient 1
+    #    - k: positive design constant
+    #    - kp: proportional gain
+    #    - ki: integral gain
+    #    - h0: initial headway
+    #    - hc: constant headway
+    pi:
+        delta_s_min: 3
+        k1: 0.18
+        k: 0.1
+        kp: 0.2
+        ki: 0.1
+        h0: 0.1
+        hc: 0.2
+
+    # Collision Avoidance ACC parameters
+    ###
+    # .. code-block:: yaml
+    #
+    #    - delta_s_min: minimum distance to leading vehicle
+    #    - k1: feedback coefficient 1; Paper 0.18, Suggestion 0.1
+    #    - k2: feedback coefficient 2; Paper 1.93, Suggestion 5.4
+    #    - Q: aggressiveness coefficient; Paper 1, Suggestion 1
+    #    - P: perception coefficient; Paper 100, Suggestion 20
+    #    - t_des: desired time gap to leading vehicle; Paper 1.2, Suggestion 1.2
+    collision_avoidance:
+        delta_s_min: 3
+        k1: 0.1
+        k2: 5.4
+        Q: 1
+        P: 20
+        t_des: 1.5
+
+    # Extended PI ACC parameters
+    ###
+    # .. code-block:: yaml
+    #
+    #   - kp: proportional gain
+    #   - ki: integral gain
+    #   - tv: velocity control time constant
+    #   - td: distance control time constant
+    #   - t_set: desired time gap to leading vehicle
+    extended_pi:
+        kp: 2
+        ki: 0.1
+        tv: 1.5
+        td: 13.3
+        t_set: 2
+
+    # IDM ACC parameters
+    ###
+    # .. code-block:: yaml
+    #
+    #   - delta_s_min: minimum distance to leading vehicle
+    #   - t_des: desired time gap to leading vehicle
+    #   - b: desired deceleration
+    idm:
+        delta_s_min: 3
+        t_des: 1.5
+        b: 0.02

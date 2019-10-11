@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>rrt &mdash; ACC Falsification Tool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ACC Falsification Tool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">ACC Falsification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/acc/modules.html">Adaptive Cruise Control Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_collision_avoidance.html">Module Collision Avoidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_extended_pi.html">Module Extended PI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_intelligent_driver_model.html">Module Intelligent Driver Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_interface.html">Module ACC Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_pi.html">Module Simple PI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lead_search/modules.html">Leading Vehicle Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/backward_search.html">Module Backward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/forward_search.html">Module Forward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/monte_carlo_simulation.html">Modul Monte Carlo Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt.html">Module RRT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt_backward.html">Module RRT Backward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt_forward.html">Module RRT Forward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/utility_search.html">Module Utility Functions Search Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/common/modules.html">Common</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/configuration.html">Module Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/node.html">Module Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/state.html">Module State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/utility_fcts.html">Module Utility Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/utility_safety.html">Module Utility Functions Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/output/modules.html">Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/output/visualization.html">Module Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/output/storage.html">Module Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/falsification.html">Module Falsification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/review.html">Module Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/config.html">Module Config</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ACC Falsification Tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>rrt</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for rrt</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Abstract RRT class with all functions for the different RRT sub-types.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">common.node</span> <span class="k">import</span> <span class="n">Node</span>
+<span class="kn">from</span> <span class="nn">common.utility_fcts</span> <span class="k">import</span> <span class="n">forward_simulation</span><span class="p">,</span> <span class="n">check_feasibility</span>
+<span class="kn">from</span> <span class="nn">common.state</span> <span class="k">import</span> <span class="n">State</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="k">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">common.configuration</span> <span class="k">import</span> <span class="n">SamplingStrategy</span>
+
+
+<div class="viewcode-block" id="RRT"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT">[docs]</a><span class="k">class</span> <span class="nc">RRT</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">rrt_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialization of the RRT planner</span>
+
+<span class="sd">        :param simulation_param: dictionary with parameters of the simulation environment</span>
+<span class="sd">        :param rrt_param: dictionary with RRT parameters</span>
+<span class="sd">        :param lead_vehicle_param: parameters of the leading vehicle</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span> <span class="o">=</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_a_max</span> <span class="o">=</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_max&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_a_min</span> <span class="o">=</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_min&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_j_max</span> <span class="o">=</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_max&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_j_min</span> <span class="o">=</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;j_min&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_velocity</span> <span class="o">=</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">longitudinal</span><span class="o">.</span><span class="n">v_max</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_t_react</span> <span class="o">=</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;t_react&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_vehicle</span> <span class="o">=</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_strategy</span> <span class="o">=</span> <span class="n">rrt_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sampling_strategy&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_number_nodes_rrt</span> <span class="o">=</span> <span class="n">rrt_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;number_nodes&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_range</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sampling_strategy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SamplingStrategy</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_strategy</span>
+
+    <span class="nd">@sampling_strategy</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">sampling_strategy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strategy</span><span class="p">:</span> <span class="n">SamplingStrategy</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_strategy</span> <span class="o">=</span> <span class="n">strategy</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">a_max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a_max</span>
+
+    <span class="nd">@a_max</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">a_max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_a_max</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">a_min</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_a_min</span>
+
+    <span class="nd">@a_min</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">a_min</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_a_min</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">j_max</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_j_max</span>
+
+    <span class="nd">@j_max</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">j_max</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_j_max</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">j_min</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_j_min</span>
+
+    <span class="nd">@j_min</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">j_min</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_j_min</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">max_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_velocity</span>
+
+    <span class="nd">@max_velocity</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">max_velocity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_max_velocity</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span>
+
+    <span class="nd">@dt</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">dt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">number_nodes_rrt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_number_nodes_rrt</span>
+
+    <span class="nd">@number_nodes_rrt</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">number_nodes_rrt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_number_nodes_rrt</span> <span class="o">=</span> <span class="n">num_nodes</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sampling_range</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_range</span>
+
+    <span class="nd">@sampling_range</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">sampling_range</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sampling_range</span> <span class="o">=</span> <span class="n">values</span>
+
+<div class="viewcode-block" id="RRT.sample"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.sample">[docs]</a>    <span class="k">def</span> <span class="nf">sample</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_min_position</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">current_max_position</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">current_min_velocity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+               <span class="n">current_max_velocity</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sampling of desired position/velocity (difference)</span>
+
+<span class="sd">        :param current_min_position: current minimum position of all rrt-nodes from time step t-1 [m]</span>
+<span class="sd">        :param current_max_position: current maximum position of all rrt-nodes from time step t-1 [m]</span>
+<span class="sd">        :param current_min_velocity: current minimum velocity of all rrt-nodes from time step t-1 [m/s]</span>
+<span class="sd">        :param current_max_velocity: current maximum velocity of all rrt-nodes from time step t-1 [m/s]</span>
+<span class="sd">        :return: Sampled x-position (difference) [m] and velocity (difference) [m/s]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s_x_desired</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">current_min_position</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                        <span class="n">current_max_position</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">v_desired</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">current_min_velocity</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_range</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                                      <span class="n">current_max_velocity</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_range</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">s_x_desired</span><span class="p">,</span> <span class="n">v_desired</span></div>
+
+<div class="viewcode-block" id="RRT.normalize_state"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.normalize_state">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">normalize_state</span><span class="p">(</span><span class="n">list_s</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">list_v</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">sample</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> \
+            <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates normalized states for global (local) coordinate system</span>
+
+<span class="sd">        :param list_s: list of absolute position (difference) values from all node at t-1 [m]</span>
+<span class="sd">        :param list_v: list of absolute velocity (difference) values from all node at t-1 [m]</span>
+<span class="sd">        :param sample: list containing the sampled x-position (distance) and velocity (difference)</span>
+<span class="sd">        :return: mean position (difference) , mean velocity (difference) , position (difference) variance,</span>
+<span class="sd">        velocity (difference) variance, normalized position (difference) , normalized velocity (difference)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mean_s</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">list_s</span><span class="p">))</span>
+        <span class="n">mean_v</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">list_v</span><span class="p">))</span>
+        <span class="n">variance_s</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">list_s</span><span class="p">))</span>
+        <span class="n">variance_v</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">list_v</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">variance_v</span> <span class="o">&lt;=</span> <span class="mf">1e-12</span><span class="p">:</span>  <span class="c1"># necessary to prevent numerical errors</span>
+            <span class="n">variance_v</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="k">if</span> <span class="n">variance_s</span> <span class="o">&lt;=</span> <span class="mf">1e-12</span><span class="p">:</span>  <span class="c1"># necessary to prevent numerical errors</span>
+            <span class="n">variance_s</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="n">normalized_s</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean_s</span><span class="p">)</span> <span class="o">/</span> <span class="n">variance_s</span>
+        <span class="n">normalized_v</span> <span class="o">=</span> <span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean_v</span><span class="p">)</span> <span class="o">/</span> <span class="n">variance_v</span>
+
+        <span class="k">return</span> <span class="n">mean_s</span><span class="p">,</span> <span class="n">mean_v</span><span class="p">,</span> <span class="n">variance_s</span><span class="p">,</span> <span class="n">variance_v</span><span class="p">,</span> <span class="n">normalized_s</span><span class="p">,</span> <span class="n">normalized_v</span></div>
+
+<div class="viewcode-block" id="RRT.nearest_node_local"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.nearest_node_local">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">nearest_node_local</span><span class="p">(</span><span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">],</span> <span class="n">sample</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Node</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Closest node based on Euclidean distance for local coordinate system</span>
+
+<span class="sd">        :param node_list: list of nodes from previous time step</span>
+<span class="sd">        :param sample: list with sampled distance [m], sampled velocity difference [m/s]</span>
+<span class="sd">        :return: parent node, node index in node_list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">distance_min</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+        <span class="n">node_min</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">node_number</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Calculate means and variances for normalization of distance and velocity difference</span>
+        <span class="c1"># based on all nodes from previous time step and sample</span>
+        <span class="n">list_delta_s</span> <span class="o">=</span> <span class="p">[</span><span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">list_delta_v</span> <span class="o">=</span> <span class="p">[</span><span class="n">sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_list</span><span class="p">):</span>
+            <span class="n">list_delta_s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">delta_s</span><span class="p">)</span>
+            <span class="n">list_delta_v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">delta_v</span><span class="p">)</span>
+        <span class="n">mean_delta_s</span><span class="p">,</span> <span class="n">mean_delta_v</span><span class="p">,</span> <span class="n">variance_delta_s</span><span class="p">,</span> <span class="n">variance_delta_v</span><span class="p">,</span> <span class="n">normalized_position</span><span class="p">,</span> <span class="n">normalized_velocity</span> <span class="o">=</span> \
+            <span class="n">RRT</span><span class="o">.</span><span class="n">normalize_state</span><span class="p">(</span><span class="n">list_delta_s</span><span class="p">,</span> <span class="n">list_delta_v</span><span class="p">,</span> <span class="n">sample</span><span class="p">)</span>
+
+        <span class="c1"># Evaluate distance to all nodes and store the one with minimal distance</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_list</span><span class="p">):</span>
+            <span class="n">distance</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((((</span><span class="n">node</span><span class="o">.</span><span class="n">delta_s</span> <span class="o">-</span> <span class="n">mean_delta_s</span><span class="p">)</span> <span class="o">/</span> <span class="n">variance_delta_s</span><span class="p">)</span> <span class="o">-</span> <span class="n">normalized_position</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span>
+                                 <span class="p">(((</span><span class="n">node</span><span class="o">.</span><span class="n">delta_v</span> <span class="o">-</span> <span class="n">mean_delta_v</span><span class="p">)</span> <span class="o">/</span> <span class="n">variance_delta_v</span><span class="p">)</span> <span class="o">-</span> <span class="n">normalized_velocity</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">distance_min</span><span class="p">:</span>
+                <span class="n">distance_min</span> <span class="o">=</span> <span class="n">distance</span>
+                <span class="n">node_min</span> <span class="o">=</span> <span class="n">node</span>
+                <span class="n">node_number</span> <span class="o">=</span> <span class="n">index</span>
+        <span class="k">return</span> <span class="n">node_min</span><span class="p">,</span> <span class="n">node_number</span></div>
+
+<div class="viewcode-block" id="RRT.nearest_node_global"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.nearest_node_global">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">nearest_node_global</span><span class="p">(</span><span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">],</span> <span class="n">sample</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Node</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Euclidean distance to choose the closest node for the global coordinate system</span>
+
+<span class="sd">        :param node_list: list of nodes from previous time step</span>
+<span class="sd">        :param sample:  list with sampled x-position [m], sampled velocity [m/s]</span>
+<span class="sd">        :return: parent node, node index in node_list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">distance_min</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+        <span class="n">node_number</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">node_min</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Calculate means and variances for normalization of position and velocity</span>
+        <span class="c1"># based on all nodes from previous time step and sample</span>
+        <span class="n">list_s</span> <span class="o">=</span> <span class="p">[</span><span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">list_v</span> <span class="o">=</span> <span class="p">[</span><span class="n">sample</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_list</span><span class="p">):</span>
+            <span class="n">list_s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">x_position</span><span class="p">)</span>
+            <span class="n">list_v</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span>
+
+        <span class="n">mean_s</span><span class="p">,</span> <span class="n">mean_v</span><span class="p">,</span> <span class="n">variance_s</span><span class="p">,</span> <span class="n">variance_v</span><span class="p">,</span> <span class="n">normalized_position</span><span class="p">,</span> <span class="n">normalized_velocity</span> <span class="o">=</span> \
+            <span class="n">RRT</span><span class="o">.</span><span class="n">normalize_state</span><span class="p">(</span><span class="n">list_s</span><span class="p">,</span> <span class="n">list_v</span><span class="p">,</span> <span class="n">sample</span><span class="p">)</span>
+
+        <span class="c1"># Evaluate distance to all nodes and store the one with minimal distance</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">node_list</span><span class="p">):</span>
+            <span class="n">distance</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((((</span><span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">x_position</span> <span class="o">-</span> <span class="n">mean_s</span><span class="p">)</span> <span class="o">/</span> <span class="n">variance_s</span><span class="p">)</span> <span class="o">-</span> <span class="n">normalized_position</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span>
+                                 <span class="p">(((</span><span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span> <span class="o">-</span> <span class="n">mean_v</span><span class="p">)</span> <span class="o">/</span> <span class="n">variance_v</span><span class="p">)</span> <span class="o">-</span> <span class="n">normalized_velocity</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">distance_min</span><span class="p">:</span>
+                <span class="n">distance_min</span> <span class="o">=</span> <span class="n">distance</span>
+                <span class="n">node_min</span> <span class="o">=</span> <span class="n">node</span>
+                <span class="n">node_number</span> <span class="o">=</span> <span class="n">index</span>
+        <span class="k">return</span> <span class="n">node_min</span><span class="p">,</span> <span class="n">node_number</span></div>
+
+<div class="viewcode-block" id="RRT.get_input_local"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.get_input_local">[docs]</a>    <span class="k">def</span> <span class="nf">get_input_local</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta_s_desired</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">delta_v_desired</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">closest_node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">acc_state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> \
+            <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the input to get to the sampled state for the coordinate system</span>
+
+<span class="sd">        :param delta_s_desired: sampled x-position for the leading vehicle [m]</span>
+<span class="sd">        :param delta_v_desired:  sampled velocity for the leading vehicle [m/s]</span>
+<span class="sd">        :param closest_node: nearest node to sampled state</span>
+<span class="sd">        :param acc_state: ACC state at time step t</span>
+<span class="sd">        :return: input acceleration</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">x_lead</span><span class="p">,</span> <span class="n">v_lead</span> <span class="o">=</span> <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">x_position</span><span class="p">,</span> <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span><span class="p">]])))</span>
+        <span class="n">desired</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">delta_s_desired</span><span class="p">],</span> <span class="p">[</span><span class="n">delta_v_desired</span><span class="p">]])</span>
+        <span class="n">new_state_following</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">acc_state</span><span class="o">.</span><span class="n">x_position</span><span class="p">],</span> <span class="p">[</span><span class="n">acc_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">]])</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+        <span class="n">lead</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">x_lead</span><span class="p">],</span> <span class="p">[</span><span class="n">v_lead</span><span class="p">]])</span>
+        <span class="n">tmp_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">desired</span><span class="p">,</span> <span class="n">new_state_following</span><span class="p">)</span>
+        <span class="n">tmp_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">lead</span><span class="p">)</span>
+        <span class="n">tmp_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">tmp_1</span><span class="p">,</span> <span class="n">tmp_2</span><span class="p">)</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">tmp_3</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="RRT.get_input_global"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.get_input_global">[docs]</a>    <span class="k">def</span> <span class="nf">get_input_global</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s_desired</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">v_desired</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">closest_node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">acc_state</span><span class="p">:</span> <span class="n">State</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the input to get to the sampled state for the global references sampling strategy</span>
+
+<span class="sd">        :param s_desired: sampled position for the leading vehicle [m]</span>
+<span class="sd">        :param v_desired:  sampled velocity for the leading vehicle [m/s]</span>
+<span class="sd">        :param closest_node: nearest node to sampled state</span>
+<span class="sd">        :param acc_state: ACC state at time step t - not used for input calculation (not needed for global</span>
+<span class="sd">        coordinate system)</span>
+<span class="sd">        :return: input acceleration</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current_position</span><span class="p">,</span> <span class="n">current_velocity</span> <span class="o">=</span> <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">x_position</span><span class="p">,</span> <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span>
+
+        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.5</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span><span class="p">]])))</span>
+        <span class="n">desired</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">s_desired</span><span class="p">],</span> <span class="p">[</span><span class="n">v_desired</span><span class="p">]])</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dt</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+        <span class="n">current_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">current_position</span><span class="p">],</span> <span class="p">[</span><span class="n">current_velocity</span><span class="p">]])</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">desired</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">current_state</span><span class="p">))</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="RRT.braking"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.braking">[docs]</a>    <span class="k">def</span> <span class="nf">braking</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">closest_node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">acc_state</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+                <span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Node</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Braking with minimal acceleration until standstill for a single node which violates safe distance</span>
+
+<span class="sd">        :param closest_node: node which violates safe distance at time step t-1</span>
+<span class="sd">        :param acc_state: corresponding ACC states at time step t</span>
+<span class="sd">        :param lead_vehicle_param: dictionary with physical parameters of the lead vehicle</span>
+<span class="sd">        :param acc_vehicle_param: dictionary with physical parameters of the ACC vehicle</span>
+<span class="sd">        :param simulation_param: dictionary with parameters of the simulation environment</span>
+<span class="sd">        :return: single node at time step t</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">a_new</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_min</span>
+        <span class="n">a_new</span> <span class="o">=</span> <span class="n">check_feasibility</span><span class="p">(</span><span class="n">a_new</span><span class="p">,</span> <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">a_max</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span>
+                                  <span class="bp">self</span><span class="o">.</span><span class="n">max_velocity</span><span class="p">,</span> <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">acceleration</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">j_min</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">j_max</span><span class="p">)</span>
+
+        <span class="c1"># forward simulation</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_new</span><span class="p">]</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">forward_simulation</span><span class="p">(</span><span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">x_position</span><span class="p">,</span> <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">y_position</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                   <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vehicle</span><span class="p">)</span>
+
+        <span class="c1"># create new node</span>
+        <span class="n">lead_state</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">4</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">a_new</span><span class="p">))</span>
+
+        <span class="n">new_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">closest_node</span><span class="p">,</span> <span class="n">lead_state</span><span class="p">,</span> <span class="n">acc_state</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">new_node</span></div>
+
+<div class="viewcode-block" id="RRT.forward_simulation"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.forward_simulation">[docs]</a>    <span class="k">def</span> <span class="nf">forward_simulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">steering_velocity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">closest_node</span><span class="p">:</span> <span class="n">Node</span><span class="p">,</span> <span class="n">acc_state</span><span class="p">:</span> <span class="n">State</span><span class="p">,</span>
+                           <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Node</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Forward simulation of a node</span>
+
+<span class="sd">        :param steering_velocity: input steering velocity [rad/s]</span>
+<span class="sd">        :param acceleration: input acceleration [m/s^2]</span>
+<span class="sd">        :param closest_node: node which violates safe distance at time step t-1</span>
+<span class="sd">        :param acc_state: corresponding ACC states at time step t</span>
+<span class="sd">        :param lead_vehicle_param: dictionary with physical parameters of the lead vehicle</span>
+<span class="sd">        :param acc_vehicle_param: dictionary with physical parameters of the ACC vehicle</span>
+<span class="sd">        :param simulation_param: dictionary with parameters of the simulation environment</span>
+<span class="sd">        :return: single node at time step t</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">steering_velocity</span><span class="p">,</span> <span class="n">acceleration</span><span class="p">]</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">forward_simulation</span><span class="p">(</span><span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">x_position</span><span class="p">,</span> <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">y_position</span><span class="p">,</span>
+                                   <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">steering_angle</span><span class="p">,</span> <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
+                                   <span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vehicle</span><span class="p">)</span>
+
+        <span class="c1"># create new node</span>
+        <span class="n">lead_state</span> <span class="o">=</span> <span class="n">State</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span> <span class="n">state</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">4</span><span class="p">],</span>
+                           <span class="n">steering_velocity</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">acceleration</span><span class="p">),</span> <span class="n">closest_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">time_step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">new_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">closest_node</span><span class="p">,</span> <span class="n">lead_state</span><span class="p">,</span> <span class="n">acc_state</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">new_node</span></div>
+
+<div class="viewcode-block" id="RRT.dereference_unused_nodes"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.dereference_unused_nodes">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">dereference_unused_nodes</span><span class="p">(</span><span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">],</span> <span class="n">new_node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Delete all nodes from time step t-1 which are childless</span>
+
+<span class="sd">        :param node_list: list of nodes from time step t-1</span>
+<span class="sd">        :param new_node_list: list of nodes from time step t</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">parent_status</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">current_parent_node</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">current_child_node</span> <span class="ow">in</span> <span class="n">new_node_list</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">current_child_node</span><span class="o">.</span><span class="n">parent</span> <span class="o">==</span> <span class="n">current_parent_node</span><span class="p">:</span>
+                    <span class="n">parent_status</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">parent_status</span><span class="p">:</span>
+                <span class="n">current_parent_node</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">node_list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">current_parent_node</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RRT.get_max_and_min_position"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.get_max_and_min_position">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_max_and_min_position</span><span class="p">(</span><span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get maximum and minimum position of time step t-1</span>
+
+<span class="sd">        :param node_list: list of nodes from time step t-1</span>
+<span class="sd">        :return: minimum and maximum position [m]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current_min_position</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+        <span class="n">current_max_position</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">x_position</span> <span class="o">&gt;</span> <span class="n">current_max_position</span><span class="p">:</span>
+                <span class="n">current_max_position</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">x_position</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">x_position</span> <span class="o">&lt;</span> <span class="n">current_min_position</span><span class="p">:</span>
+                <span class="n">current_min_position</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">x_position</span>
+
+        <span class="k">return</span> <span class="n">current_min_position</span><span class="p">,</span> <span class="n">current_max_position</span></div>
+
+<div class="viewcode-block" id="RRT.get_max_and_min_velocity"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.get_max_and_min_velocity">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_max_and_min_velocity</span><span class="p">(</span><span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get maximum and minimum position of time step t-1</span>
+
+<span class="sd">        :param node_list: list of nodes from time step t-1</span>
+<span class="sd">        :return: minimum and maximum velocity [m/s]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current_max_v</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">current_min_v</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span> <span class="o">&gt;</span> <span class="n">current_max_v</span><span class="p">:</span>
+                <span class="n">current_max_v</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span> <span class="o">&lt;</span> <span class="n">current_min_v</span><span class="p">:</span>
+                <span class="n">current_min_v</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span>
+
+        <span class="k">return</span> <span class="n">current_min_v</span><span class="p">,</span> <span class="n">current_max_v</span></div>
+
+<div class="viewcode-block" id="RRT.get_max_and_min_position_delta"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.get_max_and_min_position_delta">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_max_and_min_position_delta</span><span class="p">(</span><span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get maximum and minimum position of time step t-1</span>
+
+<span class="sd">        :param node_list: list of nodes from time step t-1</span>
+<span class="sd">        :return: minimum and maximum position difference [m]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current_min_position_delta</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+        <span class="n">current_max_position_delta</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_s</span> <span class="o">&gt;</span> <span class="n">current_max_position_delta</span><span class="p">:</span>
+                <span class="n">current_max_position_delta</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_s</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_s</span> <span class="o">&lt;</span> <span class="n">current_min_position_delta</span><span class="p">:</span>
+                <span class="n">current_min_position_delta</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_s</span>
+
+        <span class="k">return</span> <span class="n">current_min_position_delta</span><span class="p">,</span> <span class="n">current_max_position_delta</span></div>
+
+<div class="viewcode-block" id="RRT.get_max_and_min_velocity_delta"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.get_max_and_min_velocity_delta">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">get_max_and_min_velocity_delta</span><span class="p">(</span><span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get maximum and minimum position of time step t-1</span>
+
+<span class="sd">        :param node_list: list of nodes from time step t-1</span>
+<span class="sd">        :return: minimum and maximum velocity difference [m/s]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current_max_velocity_delta</span> <span class="o">=</span> <span class="o">-</span><span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">current_min_velocity_delta</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">maxsize</span>
+
+        <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">node_list</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_v</span> <span class="o">&gt;</span> <span class="n">current_max_velocity_delta</span><span class="p">:</span>
+                <span class="n">current_max_velocity_delta</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_v</span>
+            <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_v</span> <span class="o">&lt;</span> <span class="n">current_min_velocity_delta</span><span class="p">:</span>
+                <span class="n">current_min_velocity_delta</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_v</span>
+
+        <span class="k">return</span> <span class="n">current_min_velocity_delta</span><span class="p">,</span> <span class="n">current_max_velocity_delta</span></div>
+
+<div class="viewcode-block" id="RRT.plan"><a class="viewcode-back" href="../api/lead_search/rrt.html#rrt.RRT.plan">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">plan</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">],</span> <span class="n">acc_state_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">State</span><span class="p">],</span> <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
+             <span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Planning function for single lane scenario</span>
+
+<span class="sd">        :param node_list: list of rrt-nodes from time step t-1</span>
+<span class="sd">        :param acc_state_list: list with all acc states from time step t</span>
+<span class="sd">        :param lead_vehicle_param: physical parameters of the vehicle</span>
+<span class="sd">        :param acc_vehicle_param: physical parameters of the ACC vehicle</span>
+<span class="sd">        :param simulation_param: parameters of the simulation environment</span>
+<span class="sd">        :return: list of new nodes of time step t</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">pass</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sebastian Maierhofer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

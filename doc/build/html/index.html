@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ACC Falsification Tool Documentation &mdash; ACC Falsification Tool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ACC Falsification" href="api/modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> ACC Falsification Tool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">ACC Falsification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/acc/modules.html">Adaptive Cruise Control Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/acc/acc_collision_avoidance.html">Module Collision Avoidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/acc/acc_extended_pi.html">Module Extended PI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/acc/acc_intelligent_driver_model.html">Module Intelligent Driver Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/acc/acc_interface.html">Module ACC Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/acc/acc_pi.html">Module Simple PI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/lead_search/modules.html">Leading Vehicle Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/lead_search/backward_search.html">Module Backward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/lead_search/forward_search.html">Module Forward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/lead_search/monte_carlo_simulation.html">Modul Monte Carlo Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/lead_search/rrt.html">Module RRT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/lead_search/rrt_backward.html">Module RRT Backward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/lead_search/rrt_forward.html">Module RRT Forward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/lead_search/utility_search.html">Module Utility Functions Search Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/common/modules.html">Common</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/common/configuration.html">Module Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/common/node.html">Module Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/common/state.html">Module State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/common/utility_fcts.html">Module Utility Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/common/utility_safety.html">Module Utility Functions Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/output/modules.html">Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="api/output/visualization.html">Module Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api/output/storage.html">Module Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="api/falsification.html">Module Falsification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/review.html">Module Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/config.html">Module Config</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">ACC Falsification Tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>ACC Falsification Tool Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="acc-falsification-tool-documentation">
+<h1>ACC Falsification Tool Documentation<a class="headerlink" href="#acc-falsification-tool-documentation" title="Permalink to this headline">¶</a></h1>
+<p>The Falsification tool for Adaptive Cruise Control (ACC) systems provides an interface to test ACC systems.
+The tool is based on the approaches introduced in
+<a class="reference external" href="https://mediatum.ub.tum.de/doc/1514806/621691597458.pdf">M. Koschi, C. Pek, S. Maierhofer, and M. Althoff: Computationally Efficient Safety Falsification of Adaptive Cruise Control Systems, in Proc. of the IEEE Int. Conf. on Intelligent Transportation Systems, 2019</a>.</p>
+</div>
+<div class="section" id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h1>
+<p>For the execution of the falsification tool you need at least Python 3.6
+and the following modules:</p>
+<ul class="simple">
+<li><p>commonroad-io &gt;= 2019.2</p></li>
+<li><p>imageio &gt;= 2.5.0</p></li>
+<li><p>matplotlib &gt;= 3.1.0</p></li>
+<li><p>numpy &gt;= 1.16.4</p></li>
+<li><p>ruamel.yaml &gt;= 0.16.5</p></li>
+<li><p>scipy &gt;= 1.3.1</p></li>
+</ul>
+<div class="line-block">
+<div class="line">The usage of the Anaconda Python distribution is recommended.</div>
+<div class="line">You can install the required Python packages with the provided requirements.txt file (<em>pip install -r requirements.txt</em>).</div>
+<div class="line">Additionally, you need the <a class="reference external" href="https://gitlab.lrz.de/tum-cps/commonroad-vehicle-models/tree/master/Python">CommonRoad vehicle models</a> which must be added to your Python interpreter path.</div>
+</div>
+</div>
+<div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>The three main files are <em>falsification.py</em>, <em>config.yaml</em>, and <em>review.py</em>:</p>
+<p><strong>1. config.yaml:</strong> This file allows to adapt all parameters used by
+the falsification system, e.g. ACC vehicle parameters, simulation parameters, leading vehicle parameters).</p>
+<p><strong>2. falsification.py:</strong> This file starts the falsification, e.g. by executing it within the command line (“python falsification.py &gt; solution.out”).
+If activated in config.yaml or if a valid solution is found, solution files are generated with
+the initial setup (config_xyz.yaml) and the lead vehicle trajectory (trajectory_xyz.pkl), where xyz in the name of the
+generated files corresponds to a concatenation of the current date and time.
+The initial state of the ACC vehicle corresponds to the values defined in config.yaml (<em>s_init</em>, <em>v_init</em>).
+The initial state of the leading vehicle is randomly set in front of the ACC vehicle according to the parameters
+in config.yaml (<em>s_safe_init_backward</em>, <em>delta_s_init_min</em>, <em>delta_s_init_max</em>).</p>
+<p><strong>3. review.py:</strong> This file allows to execute a stored initial setup and leading vehicle
+trajectory.
+The script plots different profiles of the leading and ACC vehicle and stores a CommonRoad scenario.
+You must provide an input parameter to the script (e.g., “python review.py xyz”,
+where the solution files are called config_xzy.yaml and trajectory_xyz.pkl).</p>
+<p>The folder <strong>acc</strong> contains different ACC systems.
+If you want to add your own ACC system,
+you must implement the ACC system corresponding to the interface
+in <strong>acc_interface.py</strong>. Additionally, you must add your ACC system to the dictionaries in <strong>config.yaml</strong>
+and to the create_acc_vehicle_param() function and the ACCController enum, both located in <strong>configuration.py</strong>.</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">ACC Falsification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api/acc/modules.html">Adaptive Cruise Control Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/lead_search/modules.html">Leading Vehicle Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/common/modules.html">Common</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/output/modules.html">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/falsification.html">Module Falsification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/review.html">Module Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api/config.html">Module Config</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="contact-information">
+<h1>Contact information<a class="headerlink" href="#contact-information" title="Permalink to this headline">¶</a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Website</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://gitlab.lrz.de/tum-cps/safety-falsification-acc">https://gitlab.lrz.de/tum-cps/safety-falsification-acc</a></p>
+</dd>
+<dt class="field-even">Email</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:sebastian&#46;maierhofer&#37;&#52;&#48;tum&#46;de">sebastian<span>&#46;</span>maierhofer<span>&#64;</span>tum<span>&#46;</span>de</a></p>
+</dd>
+</dl>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api/modules.html" class="btn btn-neutral float-right" title="ACC Falsification" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sebastian Maierhofer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

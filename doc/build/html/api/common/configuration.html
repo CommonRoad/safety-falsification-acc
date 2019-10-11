@@ -1,0 +1,414 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Module Configuration &mdash; ACC Falsification Tool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Module Node" href="node.html" />
+    <link rel="prev" title="Common" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> ACC Falsification Tool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../modules.html">ACC Falsification</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../acc/modules.html">Adaptive Cruise Control Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../acc/acc_collision_avoidance.html">Module Collision Avoidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../acc/acc_extended_pi.html">Module Extended PI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../acc/acc_intelligent_driver_model.html">Module Intelligent Driver Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../acc/acc_interface.html">Module ACC Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../acc/acc_pi.html">Module Simple PI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../lead_search/modules.html">Leading Vehicle Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../lead_search/backward_search.html">Module Backward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lead_search/forward_search.html">Module Forward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lead_search/monte_carlo_simulation.html">Modul Monte Carlo Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lead_search/rrt.html">Module RRT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lead_search/rrt_backward.html">Module RRT Backward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lead_search/rrt_forward.html">Module RRT Forward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lead_search/utility_search.html">Module Utility Functions Search Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html">Common</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Module Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="node.html">Module Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="state.html">Module State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utility_fcts.html">Module Utility Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utility_safety.html">Module Utility Functions Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../output/modules.html">Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../output/visualization.html">Module Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../output/storage.html">Module Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../falsification.html">Module Falsification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../review.html">Module Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../config.html">Module Config</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ACC Falsification Tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../modules.html">ACC Falsification</a> &raquo;</li>
+        
+          <li><a href="modules.html">Common</a> &raquo;</li>
+        
+      <li>Module Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api/common/configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-configuration">
+<span id="module-configuration"></span><h1>Module Configuration<a class="headerlink" href="#module-configuration" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="configuration.ACCController">
+<em class="property">class </em><code class="sig-prename descclassname">configuration.</code><code class="sig-name descname">ACCController</code><a class="reference internal" href="../../_modules/configuration.html#ACCController"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#configuration.ACCController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Enum describing vehicle types</p>
+<dl class="attribute">
+<dt id="configuration.ACCController.COLLISION_AVOIDANCE">
+<code class="sig-name descname">COLLISION_AVOIDANCE</code><em class="property"> = 'collision_avoidance'</em><a class="headerlink" href="#configuration.ACCController.COLLISION_AVOIDANCE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="configuration.ACCController.EXTENDED_PI">
+<code class="sig-name descname">EXTENDED_PI</code><em class="property"> = 'extended_pi'</em><a class="headerlink" href="#configuration.ACCController.EXTENDED_PI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="configuration.ACCController.IDM">
+<code class="sig-name descname">IDM</code><em class="property"> = 'idm'</em><a class="headerlink" href="#configuration.ACCController.IDM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="configuration.ACCController.PI">
+<code class="sig-name descname">PI</code><em class="property"> = 'pi'</em><a class="headerlink" href="#configuration.ACCController.PI" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="configuration.SamplingStrategy">
+<em class="property">class </em><code class="sig-prename descclassname">configuration.</code><code class="sig-name descname">SamplingStrategy</code><a class="reference internal" href="../../_modules/configuration.html#SamplingStrategy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#configuration.SamplingStrategy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Enum describing different sampling strategies</p>
+<dl class="attribute">
+<dt id="configuration.SamplingStrategy.GLOBAL">
+<code class="sig-name descname">GLOBAL</code><em class="property"> = 'global'</em><a class="headerlink" href="#configuration.SamplingStrategy.GLOBAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="configuration.SamplingStrategy.LOCAL">
+<code class="sig-name descname">LOCAL</code><em class="property"> = 'local'</em><a class="headerlink" href="#configuration.SamplingStrategy.LOCAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="configuration.SearchType">
+<em class="property">class </em><code class="sig-prename descclassname">configuration.</code><code class="sig-name descname">SearchType</code><a class="reference internal" href="../../_modules/configuration.html#SearchType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#configuration.SearchType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Enum describing falsification search types</p>
+<dl class="attribute">
+<dt id="configuration.SearchType.BACKWARD">
+<code class="sig-name descname">BACKWARD</code><em class="property"> = 'backward'</em><a class="headerlink" href="#configuration.SearchType.BACKWARD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="configuration.SearchType.FORWARD">
+<code class="sig-name descname">FORWARD</code><em class="property"> = 'forward'</em><a class="headerlink" href="#configuration.SearchType.FORWARD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="configuration.SearchType.MONTE_CARLO">
+<code class="sig-name descname">MONTE_CARLO</code><em class="property"> = 'monte_carlo'</em><a class="headerlink" href="#configuration.SearchType.MONTE_CARLO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="configuration.VehicleType">
+<em class="property">class </em><code class="sig-prename descclassname">configuration.</code><code class="sig-name descname">VehicleType</code><a class="reference internal" href="../../_modules/configuration.html#VehicleType"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#configuration.VehicleType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></p>
+<p>Enum describing vehicle types</p>
+<dl class="attribute">
+<dt id="configuration.VehicleType.ACC">
+<code class="sig-name descname">ACC</code><em class="property"> = 'acc_vehicle'</em><a class="headerlink" href="#configuration.VehicleType.ACC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="configuration.VehicleType.LEAD">
+<code class="sig-name descname">LEAD</code><em class="property"> = 'lead_vehicle'</em><a class="headerlink" href="#configuration.VehicleType.LEAD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="configuration.create_acc_param">
+<code class="sig-prename descclassname">configuration.</code><code class="sig-name descname">create_acc_param</code><span class="sig-paren">(</span><em class="sig-param">controller_param</em>, <em class="sig-param">controller</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/configuration.html#create_acc_param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#configuration.create_acc_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update ACC controller parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>controller_param</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]) – list of dictionaries with ACC parameter</p></li>
+<li><p><strong>controller</strong> (<a class="reference internal" href="#configuration.ACCController" title="configuration.ACCController"><code class="xref py py-class docutils literal notranslate"><span class="pre">ACCController</span></code></a>) – enum value for ACC controller</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="configuration.create_acc_vehicle_param">
+<code class="sig-prename descclassname">configuration.</code><code class="sig-name descname">create_acc_vehicle_param</code><span class="sig-paren">(</span><em class="sig-param">acc_vehicle_param</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/configuration.html#create_acc_vehicle_param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#configuration.create_acc_vehicle_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update ACC vehicle parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>acc_vehicle_param</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]) – dictionary with physical parameters of the ACC vehicle</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="configuration.create_lead_vehicle_param">
+<code class="sig-prename descclassname">configuration.</code><code class="sig-name descname">create_lead_vehicle_param</code><span class="sig-paren">(</span><em class="sig-param">lead_vehicle_param</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/configuration.html#create_lead_vehicle_param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#configuration.create_lead_vehicle_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update lead vehicle parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lead_vehicle_param</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]) – dictionary with physical parameters of the leading vehicle</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="configuration.create_rrt_param">
+<code class="sig-prename descclassname">configuration.</code><code class="sig-name descname">create_rrt_param</code><span class="sig-paren">(</span><em class="sig-param">rrt_param</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/configuration.html#create_rrt_param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#configuration.create_rrt_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update RRT parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rrt_param</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]) – dictionary with RRT parameters</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="configuration.create_sim_param">
+<code class="sig-prename descclassname">configuration.</code><code class="sig-name descname">create_sim_param</code><span class="sig-paren">(</span><em class="sig-param">simulation_param</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/configuration.html#create_sim_param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#configuration.create_sim_param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update simulation parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>simulation_param</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]) – dictionary with parameters of the simulation environment</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="configuration.load_yaml">
+<code class="sig-prename descclassname">configuration.</code><code class="sig-name descname">load_yaml</code><span class="sig-paren">(</span><em class="sig-param">file_name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/configuration.html#load_yaml"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#configuration.load_yaml" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads configuration setup from a yaml file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – name of the yaml file</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[~KT, ~VT]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="node.html" class="btn btn-neutral float-right" title="Module Node" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.html" class="btn btn-neutral float-left" title="Common" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sebastian Maierhofer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

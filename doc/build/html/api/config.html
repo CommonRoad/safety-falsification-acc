@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Module Config &mdash; ACC Falsification Tool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Module Review" href="review.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ACC Falsification Tool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">ACC Falsification</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="acc/modules.html">Adaptive Cruise Control Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="acc/acc_collision_avoidance.html">Module Collision Avoidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="acc/acc_extended_pi.html">Module Extended PI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="acc/acc_intelligent_driver_model.html">Module Intelligent Driver Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="acc/acc_interface.html">Module ACC Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="acc/acc_pi.html">Module Simple PI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lead_search/modules.html">Leading Vehicle Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="lead_search/backward_search.html">Module Backward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lead_search/forward_search.html">Module Forward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lead_search/monte_carlo_simulation.html">Modul Monte Carlo Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lead_search/rrt.html">Module RRT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lead_search/rrt_backward.html">Module RRT Backward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lead_search/rrt_forward.html">Module RRT Forward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lead_search/utility_search.html">Module Utility Functions Search Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="common/modules.html">Common</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="common/configuration.html">Module Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common/node.html">Module Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common/state.html">Module State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common/utility_fcts.html">Module Utility Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="common/utility_safety.html">Module Utility Functions Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="output/modules.html">Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="output/visualization.html">Module Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="output/storage.html">Module Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="falsification.html">Module Falsification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="review.html">Module Review</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Module Config</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ACC Falsification Tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">ACC Falsification</a> &raquo;</li>
+        
+      <li>Module Config</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/config.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-config">
+<h1>Module Config<a class="headerlink" href="#module-config" title="Permalink to this headline">¶</a></h1>
+<p>simulation_param<dd><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">search_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">search method; possible options are forward, backward, or monte_carlo</span>
+<span class="p p-Indicator">-</span> <span class="nt">num_iterations</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number of iteration steps (simulation time = num_iteration * dt)</span>
+<span class="p p-Indicator">-</span> <span class="nt">dt</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">time step size</span>
+<span class="p p-Indicator">-</span> <span class="nt">v_col</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">required impact velocity at collision</span>
+<span class="p p-Indicator">-</span> <span class="nt">max_comp_time_backward</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">maximum computation time for an iteration in order to prevent dead ends during backward search</span>
+<span class="p p-Indicator">-</span> <span class="nt">s_safe_init_backward</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">maximum initial safe distance violation for backward search</span>
+<span class="p p-Indicator">-</span> <span class="nt">store_results</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">set to true if the results should be stored in case if no valid solution is found</span>
+<span class="p p-Indicator">-</span> <span class="nt">delta_s_init_min</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">initial minimum distance for the forward simulation</span>
+<span class="p p-Indicator">-</span> <span class="nt">delta_s_init_max</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">initial maximum distance for the forward simulation</span>
+<span class="p p-Indicator">-</span> <span class="nt">commonroad_benchmark_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CommonRoad solution file name</span>
+<span class="p p-Indicator">-</span> <span class="nt">commonroad_scenario_author</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Names of the authors of the created scenario</span>
+<span class="p p-Indicator">-</span> <span class="nt">commonroad_scenario_tags</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tags for the generated CommonRoad scenario describing properties of the scenario</span>
+<span class="p p-Indicator">-</span> <span class="nt">verbose_mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boolean which indicates if additional information should be printed to console</span>
+</pre></div>
+</div>
+</dd>
+</p>
+<p>rrt_param<dd><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">sampling_strategy</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">sampling strategy; possible options are local or global for sampling in local or global coordinates, respectively</span>
+<span class="p p-Indicator">-</span> <span class="nt">number_nodes</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">number of nodes created in each iteration</span>
+<span class="p p-Indicator">-</span> <span class="nt">add_sample_range_global_forward</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">extension of sampling range for global sampling in forward search [x_min, x_max, v_min, v_max]</span>
+<span class="p p-Indicator">-</span> <span class="nt">add_sample_range_global_backward</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">extension of sampling range for global sampling in backward search [x_min, x_max, v_min, v_max]</span>
+<span class="p p-Indicator">-</span> <span class="nt">add_sample_range_local_forward</span><span class="p">:</span>  <span class="l l-Scalar l-Scalar-Plain">extension of sampling range for local sampling in forward search [x_min, x_max, v_min, v_max]</span>
+<span class="p p-Indicator">-</span> <span class="nt">add_sample_range_local_backward</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">extension of sampling range for local sampling in backward search [x_min, x_max, v_min, v_max]</span>
+<span class="p p-Indicator">-</span> <span class="nt">mcs_beta_a</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">parameter for beta distribution in Monte Carlo simulation</span>
+<span class="p p-Indicator">-</span> <span class="nt">mcs_beta_b</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">parameter for beta distribution in Monte Carlo simulation</span>
+</pre></div>
+</div>
+</dd>
+</p>
+<p>acc_vehicle_param<dd><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">controller</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ACC system name; possible options are idm, collision_avoidance, extended_pi, or pi or your own ACC-controller</span>
+<span class="p p-Indicator">-</span> <span class="nt">vehicle_number</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CommonRoad vehicle number; possible options are 1, 2 or 3 (see CommonRoad vehicle models)</span>
+<span class="p p-Indicator">-</span> <span class="nt">s_init</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">initial x-position of ACC vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">v_init</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">initial velocity of ACC vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">a_init</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">initial acceleration of ACC vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">a_max</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">maximum acceleration of ACC vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">a_min</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimum acceleration of ACC vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">j_max</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">maximum jerk of ACC vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">j_min</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimum jerk of ACC vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">v_des</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">desired velocity of ACC vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">t_react</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">reaction time of ACC vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">dynamics_param</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">physical parameters of ACC vehicle; will be initialized during runtime</span>
+</pre></div>
+</div>
+</dd>
+</p>
+<p>lead_vehicle_param<dd><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">vehicle_number</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">CommonRoad vehicle number; possible options are 1, 2 or 3 (see CommonRoad vehicle models)</span>
+<span class="p p-Indicator">-</span> <span class="nt">s_init</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">initial x-position of leading vehicle, only used for review.py</span>
+<span class="p p-Indicator">-</span> <span class="nt">v_init</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">initial velocity of leading vehicle, only used for review.py</span>
+<span class="p p-Indicator">-</span> <span class="nt">a_init</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">initial acceleration of leading vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">a_max</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">maximum acceleration of leading vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">a_min</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimum acceleration of leading vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">j_max</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">maximum jerk of leading vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">j_min</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimum jerk of leading vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">v_des</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">desired velocity of leading vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">t_react</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">reaction time of leading vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">dynamics_param</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">physical parameters of leading vehicle; will be initialized during runtime</span>
+</pre></div>
+</div>
+</dd>
+</p>
+<p>acc_param<dd><blockquote>
+<div><ul class="simple">
+<li><p>PI ACC based on Yanakiev and Kanellakopoulos: “Nonlinear Spacing Policies for Automated Heavy-Duty Vehicles”</p></li>
+<li><p>Collision Avoidance ACC based on Mullakkal-Babu et al.: “Design and analysis of Full Range Adaptive Cruise Control with integrated collision avoidance strategy”</p></li>
+<li><p>Extendend PI ACC based on ﻿H. Winner, S. Hakuli, and F. Lotz: “Handbuch Fahrerassistenzsysteme: Grundlagen, Komponenten und Systeme für aktive Sicherheit und Komfort”</p></li>
+<li><p>IDM ACC based on ﻿A. Kesting, M. Treiber, M. Schönhof, and D. Helbing: “Adaptive cruise control design for active congestion avoidance”</p></li>
+</ul>
+</div></blockquote>
+</dd>
+</p>
+<p>pi<dd><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">delta_s_min</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimum distance to leading vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">k1</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">feedback coefficient 1</span>
+<span class="p p-Indicator">-</span> <span class="nt">k</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">positive design constant</span>
+<span class="p p-Indicator">-</span> <span class="nt">kp</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">proportional gain</span>
+<span class="p p-Indicator">-</span> <span class="nt">ki</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integral gain</span>
+<span class="p p-Indicator">-</span> <span class="nt">h0</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">initial headway</span>
+<span class="p p-Indicator">-</span> <span class="nt">hc</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">constant headway</span>
+</pre></div>
+</div>
+</dd>
+</p>
+<p>collision_avoidance<dd><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">delta_s_min</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimum distance to leading vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">k1</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">feedback coefficient 1; Paper 0.18, Suggestion 0.1</span>
+<span class="p p-Indicator">-</span> <span class="nt">k2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">feedback coefficient 2; Paper 1.93, Suggestion 5.4</span>
+<span class="p p-Indicator">-</span> <span class="nt">Q</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">aggressiveness coefficient; Paper 1, Suggestion 1</span>
+<span class="p p-Indicator">-</span> <span class="nt">P</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">perception coefficient; Paper 100, Suggestion 20</span>
+<span class="p p-Indicator">-</span> <span class="nt">t_des</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">desired time gap to leading vehicle; Paper 1.2, Suggestion 1.2</span>
+</pre></div>
+</div>
+</dd>
+</p>
+<p>extended_pi<dd><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">kp</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">proportional gain</span>
+<span class="p p-Indicator">-</span> <span class="nt">ki</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">integral gain</span>
+<span class="p p-Indicator">-</span> <span class="nt">tv</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">velocity control time constant</span>
+<span class="p p-Indicator">-</span> <span class="nt">td</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">distance control time constant</span>
+<span class="p p-Indicator">-</span> <span class="nt">t_set</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">desired time gap to leading vehicle</span>
+</pre></div>
+</div>
+</dd>
+</p>
+<p>idm<dd><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">delta_s_min</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimum distance to leading vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">t_des</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">desired time gap to leading vehicle</span>
+<span class="p p-Indicator">-</span> <span class="nt">b</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">desired deceleration</span>
+</pre></div>
+</div>
+</dd>
+</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="review.html" class="btn btn-neutral float-left" title="Module Review" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sebastian Maierhofer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,571 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>visualization &mdash; ACC Falsification Tool 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ACC Falsification Tool
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/modules.html">ACC Falsification</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/acc/modules.html">Adaptive Cruise Control Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_collision_avoidance.html">Module Collision Avoidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_extended_pi.html">Module Extended PI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_intelligent_driver_model.html">Module Intelligent Driver Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_interface.html">Module ACC Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/acc/acc_pi.html">Module Simple PI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/lead_search/modules.html">Leading Vehicle Search</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/backward_search.html">Module Backward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/forward_search.html">Module Forward Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/monte_carlo_simulation.html">Modul Monte Carlo Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt.html">Module RRT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt_backward.html">Module RRT Backward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/rrt_forward.html">Module RRT Forward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/lead_search/utility_search.html">Module Utility Functions Search Algorithms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/common/modules.html">Common</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/configuration.html">Module Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/node.html">Module Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/state.html">Module State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/utility_fcts.html">Module Utility Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/common/utility_safety.html">Module Utility Functions Safety</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/output/modules.html">Output</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/output/visualization.html">Module Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/output/storage.html">Module Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api/falsification.html">Module Falsification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/review.html">Module Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/config.html">Module Config</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ACC Falsification Tool</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Module code</a> &raquo;</li>
+        
+      <li>visualization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for visualization</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">patches</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">imageio</span>
+<span class="kn">from</span> <span class="nn">operator</span> <span class="k">import</span> <span class="n">sub</span>
+<span class="kn">from</span> <span class="nn">common.utility_fcts</span> <span class="k">import</span> <span class="n">get_date_and_time</span>
+<span class="kn">from</span> <span class="nn">common.node</span> <span class="k">import</span> <span class="n">Node</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="k">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;Qt5Agg&#39;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="create_profiles"><a class="viewcode-back" href="../api/output/visualization.html#visualization.create_profiles">[docs]</a><span class="k">def</span> <span class="nf">create_profiles</span><span class="p">(</span><span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">],</span> <span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> \
+        <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+                 <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plotting of positions, acceleration, velocity, and distance of ACC and lead vehicle, respectively</span>
+
+<span class="sd">    :param node_list: list of nodes from the last time step</span>
+<span class="sd">    :param simulation_param: dictionary with  simulation-specific parameters</span>
+<span class="sd">    :param lead_vehicle_param: dictionary with physical parameters of the lead vehicle</span>
+<span class="sd">    :param acc_vehicle_param: dictionary with physical parameters of the ACC-equipped vehicle</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Initialization</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_list</span><span class="p">)</span> <span class="ow">is</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">end_node</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">end_node</span> <span class="o">=</span> <span class="n">node_list</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_list</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+
+    <span class="n">velocity_profile_lead</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">velocity_profile_acc</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">acceleration_profile_lead</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">acceleration_profile_acc</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">x_position_profile_lead</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">x_position_profile_acc</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">y_position_profile_lead</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">y_position_profile_acc</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">x_distance_profile</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">unsafe_distance_profile</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">safe_distance_profile</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Iterate backwards and add information to lists</span>
+    <span class="k">while</span> <span class="n">end_node</span><span class="o">.</span><span class="n">parent</span><span class="p">:</span>
+        <span class="n">velocity_profile_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span>
+        <span class="n">x_position_profile_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">get_acc_x_position_front</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="p">))</span>
+        <span class="n">y_position_profile_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">y_position</span><span class="p">)</span>
+        <span class="n">acceleration_profile_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">acceleration</span><span class="p">)</span>
+        <span class="n">velocity_profile_lead</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span>
+        <span class="n">x_position_profile_lead</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">get_lead_x_position_rear</span><span class="p">(</span><span class="n">lead_vehicle_param</span><span class="p">))</span>
+        <span class="n">y_position_profile_lead</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">y_position</span><span class="p">)</span>
+        <span class="n">acceleration_profile_lead</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">acceleration</span><span class="p">)</span>
+        <span class="n">x_distance_profile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">delta_s</span><span class="p">)</span>
+        <span class="n">unsafe_distance_profile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_node</span><span class="o">.</span><span class="n">unsafe_distance</span><span class="p">))</span>
+        <span class="n">safe_distance_profile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">safe_distance</span><span class="p">)</span>
+        <span class="n">end_node</span> <span class="o">=</span> <span class="n">end_node</span><span class="o">.</span><span class="n">parent</span>
+
+    <span class="c1"># Add initial state</span>
+    <span class="n">velocity_profile_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span>
+    <span class="n">x_position_profile_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">get_acc_x_position_front</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="p">))</span>
+    <span class="n">y_position_profile_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">y_position</span><span class="p">)</span>
+    <span class="n">acceleration_profile_acc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">acc_state</span><span class="o">.</span><span class="n">acceleration</span><span class="p">)</span>
+    <span class="n">velocity_profile_lead</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span>
+    <span class="n">x_position_profile_lead</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">get_lead_x_position_rear</span><span class="p">(</span><span class="n">lead_vehicle_param</span><span class="p">))</span>
+    <span class="n">y_position_profile_lead</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">y_position</span><span class="p">)</span>
+    <span class="n">acceleration_profile_lead</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">lead_state</span><span class="o">.</span><span class="n">acceleration</span><span class="p">)</span>
+    <span class="n">x_distance_profile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">delta_s</span><span class="p">)</span>
+    <span class="n">unsafe_distance_profile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_node</span><span class="o">.</span><span class="n">unsafe_distance</span><span class="p">))</span>
+    <span class="n">safe_distance_profile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">end_node</span><span class="o">.</span><span class="n">safe_distance</span><span class="p">)</span>
+
+    <span class="c1"># Create time array</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_position_profile_lead</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">-</span> <span class="n">dt</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">x_position_profile_lead</span><span class="p">),</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># reverse array</span>
+    <span class="n">velocity_profile_lead</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">velocity_profile_lead</span><span class="p">))</span>
+    <span class="n">velocity_profile_ego</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">velocity_profile_acc</span><span class="p">))</span>
+    <span class="n">x_position_profile_lead</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">x_position_profile_lead</span><span class="p">))</span>
+    <span class="n">x_position_profile_ego</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">x_position_profile_acc</span><span class="p">))</span>
+    <span class="n">acceleration_profile_lead</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">acceleration_profile_lead</span><span class="p">))</span>
+    <span class="n">acceleration_profile_ego</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">acceleration_profile_acc</span><span class="p">))</span>
+    <span class="n">x_distance_profile</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">x_distance_profile</span><span class="p">))</span>
+    <span class="n">safe_distance</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">safe_distance_profile</span><span class="p">))</span>
+    <span class="n">unsafe_distance</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">unsafe_distance_profile</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">time</span><span class="p">,</span> <span class="n">velocity_profile_lead</span><span class="p">,</span> <span class="n">velocity_profile_ego</span><span class="p">,</span> <span class="n">x_position_profile_lead</span><span class="p">,</span> <span class="n">x_position_profile_ego</span><span class="p">,</span> \
+           <span class="n">acceleration_profile_lead</span><span class="p">,</span> <span class="n">acceleration_profile_ego</span><span class="p">,</span> <span class="n">x_distance_profile</span><span class="p">,</span> <span class="n">safe_distance</span><span class="p">,</span> <span class="n">unsafe_distance</span></div>
+
+
+<div class="viewcode-block" id="plot_figures"><a class="viewcode-back" href="../api/output/visualization.html#visualization.plot_figures">[docs]</a><span class="k">def</span> <span class="nf">plot_figures</span><span class="p">(</span><span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">],</span> <span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plotting of positions, acceleration, velocity, and distance of ACC and leading vehicle, respectively</span>
+
+<span class="sd">    :param node_list: list of nodes from the last time step</span>
+<span class="sd">    :param simulation_param: dictionary with  simulation-specific parameters</span>
+<span class="sd">    :param lead_vehicle_param: dictionary with physical parameters of the leading vehicle</span>
+<span class="sd">    :param acc_vehicle_param: dictionary with physical parameters of the ACC vehicle</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">simulation_type</span> <span class="o">=</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;search_type&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+    <span class="n">acc_controller</span> <span class="o">=</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;controller&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="c1"># Storage related configuration</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="mf">3.39</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+    <span class="n">figsize</span> <span class="o">=</span> <span class="p">[</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">]</span>
+    <span class="n">linewidth_plot</span> <span class="o">=</span> <span class="mf">0.75</span>
+    <span class="n">mp</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">})</span>
+    <span class="n">mp</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;axes.linewidth&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">})</span>
+    <span class="n">mp</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;figure.autolayout&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+    <span class="n">mp</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;legend.frameon&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
+
+    <span class="c1"># Directory creation if plots should be stored</span>
+    <span class="n">datetime</span> <span class="o">=</span> <span class="n">get_date_and_time</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;figures/&quot;</span><span class="p">):</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;figures/&quot;</span><span class="p">)</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;figures/&quot;</span> <span class="o">+</span> <span class="n">acc_controller</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">simulation_type</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">datetime</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+    <span class="c1"># Create profiles</span>
+    <span class="n">time</span><span class="p">,</span> <span class="n">velocity_profile_lead</span><span class="p">,</span> <span class="n">velocity_profile_acc</span><span class="p">,</span> <span class="n">x_position_profile_lead</span><span class="p">,</span> <span class="n">x_position_profile_acc</span><span class="p">,</span> \
+    <span class="n">acceleration_profile_lead</span><span class="p">,</span> <span class="n">acceleration_profile_acc</span><span class="p">,</span> <span class="n">x_distance_profile</span><span class="p">,</span> <span class="n">safe_distance</span><span class="p">,</span> <span class="n">unsafe_distance</span> <span class="o">=</span> \
+        <span class="n">create_profiles</span><span class="p">(</span><span class="n">node_list</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">)</span>
+
+    <span class="c1"># Velocity plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$v~[m/s]$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$t~[s]$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">velocity_profile_lead</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$v_</span><span class="si">{lead}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth_plot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">velocity_profile_acc</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$v_</span><span class="si">{acc}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth_plot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/velocity_&quot;</span> <span class="o">+</span> <span class="n">acc_controller</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">simulation_type</span> <span class="o">+</span> <span class="s2">&quot;.svg&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;svg&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Acceleration plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$a~[m/s^2]$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$t~[s]$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">8.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">acceleration_profile_lead</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$a_</span><span class="si">{lead}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth_plot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">acceleration_profile_acc</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$a_</span><span class="si">{acc}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth_plot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/acceleration_&quot;</span> <span class="o">+</span> <span class="n">acc_controller</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">simulation_type</span> <span class="o">+</span> <span class="s2">&quot;.svg&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;svg&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Distance plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\Delta s~[m]$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$t~[s]$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">x_distance_profile</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\Delta s$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth_plot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">safe_distance</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$s_</span><span class="si">{safe}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth_plot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">unsafe_distance</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$s_</span><span class="si">{unsafe}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth_plot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s2">&quot;/distance_&quot;</span> <span class="o">+</span> <span class="n">acc_controller</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">simulation_type</span> <span class="o">+</span> <span class="s2">&quot;.svg&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;svg&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="animate_profiles"><a class="viewcode-back" href="../api/output/visualization.html#visualization.animate_profiles">[docs]</a><span class="k">def</span> <span class="nf">animate_profiles</span><span class="p">(</span><span class="n">number_frame</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">lead_vehicle_profile</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">acc_profile</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+                     <span class="n">time_profile</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">x_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y_label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">x_min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                     <span class="n">x_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y_min</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y_max</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creation of GIF based on profiles of leading and ACC vehicle</span>
+
+<span class="sd">    :param number_frame: current time step</span>
+<span class="sd">    :param lead_vehicle_profile: profile of leading vehicle</span>
+<span class="sd">    :param acc_profile: profile of ACC vehicle</span>
+<span class="sd">    :param time_profile: list with all time steps</span>
+<span class="sd">    :param x_label: label of x-axis</span>
+<span class="sd">    :param y_label: label of y-axis</span>
+<span class="sd">    :param x_min: minimum value of x-axis</span>
+<span class="sd">    :param x_max: maximum value of x-axis</span>
+<span class="sd">    :param y_min: minimum value of y-axis</span>
+<span class="sd">    :param y_max: maximum value of y-axis</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">linewidth_plot</span> <span class="o">=</span> <span class="mf">1.75</span>
+    <span class="n">lead_vehicle_short</span> <span class="o">=</span> <span class="n">lead_vehicle_profile</span><span class="p">[:</span><span class="n">number_frame</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">acc_short</span> <span class="o">=</span> <span class="n">acc_profile</span><span class="p">[:</span><span class="n">number_frame</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">time_short</span> <span class="o">=</span> <span class="n">time_profile</span><span class="p">[:</span><span class="n">number_frame</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.075</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_short</span><span class="p">,</span> <span class="n">lead_vehicle_short</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$lead vehicle&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth_plot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_short</span><span class="p">,</span> <span class="n">acc_short</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$ACC$&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">linewidth_plot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="n">x_label</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;&#39;</span> <span class="o">+</span> <span class="n">y_label</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">tostring_rgb</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">get_width_height</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">image</span></div>
+
+
+<div class="viewcode-block" id="animate_cars"><a class="viewcode-back" href="../api/output/visualization.html#visualization.animate_cars">[docs]</a><span class="k">def</span> <span class="nf">animate_cars</span><span class="p">(</span><span class="n">number_frame</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">lead_position_profile</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">acc_position_profile</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+                 <span class="n">lead_acceleration_profile</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">acc_acceleration_profile</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span>
+                 <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creation of GIF with ACC vehicle following leading vehicle</span>
+
+<span class="sd">    :param number_frame: current time step</span>
+<span class="sd">    :param lead_position_profile: position profile of lead vehicle</span>
+<span class="sd">    :param acc_position_profile: position profile of ACC vehicle</span>
+<span class="sd">    :param lead_acceleration_profile: acceleration profile of lead vehicle</span>
+<span class="sd">    :param acc_acceleration_profile: acceleration position profile of ACC vehicle</span>
+<span class="sd">    :param lead_vehicle_param: dictionary with physical parameters of the lead vehicle</span>
+<span class="sd">    :param acc_vehicle_param: dictionary with physical parameters of the ACC vehicle</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">number_frame</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">lead_position_profile</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">number_frame</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lead_position_profile</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="n">x_position_lead</span> <span class="o">=</span> <span class="n">lead_position_profile</span><span class="p">[</span><span class="n">number_frame</span><span class="p">]</span>
+    <span class="n">x_position_acc</span> <span class="o">=</span> <span class="n">acc_position_profile</span><span class="p">[</span><span class="n">number_frame</span><span class="p">]</span>
+    <span class="n">position_differences</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">lead_position_profile</span><span class="p">,</span> <span class="n">acc_position_profile</span><span class="p">))</span>
+    <span class="n">max_position_difference</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">position_differences</span><span class="p">)</span>
+    <span class="n">acc_light_on</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">lead_light_on</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">color_green_acc</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">color_red_acc</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">color_blue_acc</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">color_green_lead</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">color_red_lead</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">color_blue_lead</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">mp</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="n">adjustable</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">1200</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+    <span class="n">x_min</span> <span class="o">=</span> <span class="n">x_position_lead</span> <span class="o">-</span> <span class="n">max_position_difference</span> <span class="o">-</span> <span class="mi">6</span>
+    <span class="n">x_max</span> <span class="o">=</span> <span class="n">x_position_lead</span> <span class="o">+</span> <span class="mi">6</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+    <span class="n">line_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">lower_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">line_x</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">upper_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">line_x</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="mi">3</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">line_x</span><span class="p">,</span> <span class="n">upper_line</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">line_x</span><span class="p">,</span> <span class="n">lower_line</span><span class="p">,</span> <span class="s2">&quot;k&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Create a Rectangle patch</span>
+    <span class="n">acc_vehicle</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">x_position_acc</span> <span class="o">-</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="mf">1.5</span>
+                                     <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">w</span><span class="p">),</span>
+                                    <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">l</span><span class="p">,</span>
+                                    <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                                    <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">lead_vehicle</span> <span class="o">=</span> <span class="n">patches</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">((</span><span class="n">x_position_lead</span><span class="p">,</span> <span class="mf">1.5</span>
+                                      <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">w</span><span class="p">),</span>
+                                     <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">l</span><span class="p">,</span>
+                                     <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                                     <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">))</span>
+
+    <span class="c1"># Set color of braking light</span>
+    <span class="k">if</span> <span class="n">acc_acceleration_profile</span><span class="p">[</span><span class="n">number_frame</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.001</span><span class="p">:</span>
+        <span class="n">color_green_acc</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">color_red_acc</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">color_blue_acc</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">acc_acceleration_profile</span><span class="p">[</span><span class="n">number_frame</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.001</span><span class="p">:</span>
+        <span class="n">color_green_acc</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">color_red_acc</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">color_blue_acc</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">acc_light_on</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">lead_acceleration_profile</span><span class="p">[</span><span class="n">number_frame</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.001</span><span class="p">:</span>
+        <span class="n">color_green_lead</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">color_red_lead</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">color_blue_lead</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">lead_acceleration_profile</span><span class="p">[</span><span class="n">number_frame</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.001</span><span class="p">:</span>
+        <span class="n">color_green_lead</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="n">color_red_lead</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">color_blue_lead</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lead_light_on</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># Draw braking light</span>
+    <span class="k">if</span> <span class="n">acc_light_on</span><span class="p">:</span>
+        <span class="n">circle1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">x_position_acc</span> <span class="o">-</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="mf">1.5</span>
+                              <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">w</span><span class="p">),</span>
+                             <span class="mf">0.2</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="n">color_red_acc</span><span class="p">,</span> <span class="n">color_green_acc</span><span class="p">,</span> <span class="n">color_blue_acc</span><span class="p">))</span>
+        <span class="n">circle2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">x_position_acc</span> <span class="o">-</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">l</span><span class="p">,</span> <span class="mf">1.5</span>
+                              <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">w</span><span class="p">),</span>
+                             <span class="mf">0.2</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="n">color_red_acc</span><span class="p">,</span> <span class="n">color_green_acc</span><span class="p">,</span> <span class="n">color_blue_acc</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle1</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">lead_light_on</span><span class="p">:</span>
+        <span class="n">circle3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">x_position_lead</span><span class="p">,</span> <span class="mf">1.5</span>
+                              <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">w</span><span class="p">),</span> <span class="mf">0.2</span><span class="p">,</span>
+                             <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="n">color_red_lead</span><span class="p">,</span> <span class="n">color_green_lead</span><span class="p">,</span> <span class="n">color_blue_lead</span><span class="p">))</span>
+        <span class="n">circle4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">x_position_lead</span><span class="p">,</span> <span class="mf">1.5</span>
+                              <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">w</span><span class="p">),</span> <span class="mf">0.2</span><span class="p">,</span>
+                             <span class="n">facecolor</span><span class="o">=</span><span class="p">(</span><span class="n">color_red_lead</span><span class="p">,</span> <span class="n">color_green_lead</span><span class="p">,</span> <span class="n">color_blue_lead</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle3</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle4</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">acc_vehicle</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">lead_vehicle</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">tostring_rgb</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">get_width_height</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span><span class="p">,))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">image</span></div>
+
+
+<div class="viewcode-block" id="store_videos"><a class="viewcode-back" href="../api/output/visualization.html#visualization.store_videos">[docs]</a><span class="k">def</span> <span class="nf">store_videos</span><span class="p">(</span><span class="n">node_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Node</span><span class="p">],</span> <span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creation of profile videos and car following video</span>
+
+<span class="sd">    :param node_list: list of nodes from the last time step</span>
+<span class="sd">    :param simulation_param: dictionary with simulation specific parameters</span>
+<span class="sd">    :param lead_vehicle_param: dictionary with physical parameters of the lead vehicle</span>
+<span class="sd">    :param acc_vehicle_param: dictionary with physical parameters of the ACC vehicle</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">)</span>
+
+    <span class="n">time</span><span class="p">,</span> <span class="n">velocity_profile_lead</span><span class="p">,</span> <span class="n">velocity_profile_acc</span><span class="p">,</span> <span class="n">x_position_profile_lead</span><span class="p">,</span> <span class="n">x_position_profile_acc</span><span class="p">,</span> \
+    <span class="n">acceleration_profile_lead</span><span class="p">,</span> <span class="n">acceleration_profile_acc</span><span class="p">,</span> <span class="n">x_distance_profile</span><span class="p">,</span> <span class="n">safe_distance</span><span class="p">,</span> <span class="n">unsafe_distance</span> <span class="o">=</span> \
+        <span class="n">create_profiles</span><span class="p">(</span><span class="n">node_list</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">)</span>
+
+    <span class="c1"># Separate generation of each video is necessary</span>
+    <span class="c1"># (otherwise it could be that the video is cut-off too early or the font sizes are not identical)</span>
+    <span class="n">imageio</span><span class="o">.</span><span class="n">mimsave</span><span class="p">(</span><span class="s1">&#39;velocity.gif&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">animate_profiles</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">velocity_profile_lead</span><span class="p">,</span> <span class="n">velocity_profile_acc</span><span class="p">,</span>
+                                                      <span class="n">time</span><span class="p">,</span> <span class="s1">&#39;$t~[s]$&#39;</span><span class="p">,</span> <span class="s1">&#39;$v~[m/s]$&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">time</span><span class="p">),</span> <span class="mi">0</span> <span class="o">-</span> <span class="mf">0.25</span><span class="p">,</span>
+                                                      <span class="nb">max</span><span class="p">(</span><span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">longitudinal</span><span class="o">.</span><span class="n">v_max</span><span class="p">,</span>
+                                                          <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dynamics_param&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">longitudinal</span><span class="o">.</span><span class="n">v_max</span><span class="p">)</span>
+                                                      <span class="o">+</span> <span class="mf">0.25</span><span class="p">)</span>
+                                     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">velocity_profile_lead</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)],</span> <span class="n">fps</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">imageio</span><span class="o">.</span><span class="n">mimsave</span><span class="p">(</span><span class="s1">&#39;acceleration.gif&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">animate_profiles</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">acceleration_profile_lead</span><span class="p">,</span> <span class="n">acceleration_profile_acc</span><span class="p">,</span>
+                                                          <span class="n">time</span><span class="p">,</span> <span class="s1">&#39;$t~[s]$&#39;</span><span class="p">,</span> <span class="s1">&#39;$a~[m/s^2]$&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">time</span><span class="p">),</span>
+                                                          <span class="nb">min</span><span class="p">(</span><span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_min&quot;</span><span class="p">),</span>
+                                                              <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_min&quot;</span><span class="p">))</span> <span class="o">-</span> <span class="mf">0.25</span><span class="p">,</span>
+                                                          <span class="nb">max</span><span class="p">(</span><span class="n">lead_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_max&quot;</span><span class="p">),</span>
+                                                              <span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a_max&quot;</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.25</span><span class="p">)</span>
+                                         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">velocity_profile_lead</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)],</span> <span class="n">fps</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">imageio</span><span class="o">.</span><span class="n">mimsave</span><span class="p">(</span><span class="s1">&#39;position.gif&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">animate_cars</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">x_position_profile_lead</span><span class="p">,</span> <span class="n">x_position_profile_acc</span><span class="p">,</span>
+                                                  <span class="n">acceleration_profile_lead</span><span class="p">,</span> <span class="n">acceleration_profile_acc</span><span class="p">,</span>
+                                                  <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">)</span>
+                                     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_position_profile_lead</span><span class="p">)</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)],</span> <span class="n">fps</span><span class="o">=</span><span class="mi">1</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Sebastian Maierhofer
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
