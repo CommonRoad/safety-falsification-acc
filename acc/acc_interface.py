@@ -15,7 +15,6 @@ class AccFactory(ABC):
         self._j_max = acc_vehicle_param.get("j_max")
         self._j_min = acc_vehicle_param.get("j_min")
         self._v_max = acc_vehicle_param.get("dynamics_param").longitudinal.v_max
-        self._fov = acc_vehicle_param.get("sensor_detection_range")
         self._vehicle = acc_vehicle_param.get("dynamics_param")
         self._v_des = acc_vehicle_param.get("v_des")
 

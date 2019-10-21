@@ -3,7 +3,7 @@ from lead_search.rrt_backward import RRTBackward
 from lead_search.rrt_forward import RRTForward
 from common.state import State
 from common.node import Node
-from common.utility_fcts import check_feasibility, forward_simulation, acc_input_forward
+from common.utility_fcts import check_feasibility, forward_propagation, acc_input_forward
 from output.storage import store_results
 import numpy as np
 from timeit import default_timer as timer
@@ -202,9 +202,9 @@ def search(rrt_param: Dict, acc_vehicle_param: Dict, simulation_param: Dict, lea
                                             node.parent.get_acc_x_position_front(acc_vehicle_param),
                                             node.parent.acc_state.acceleration)
             inputs = [0, a_acc]
-            state_acc = forward_simulation(node.parent.acc_state.x_position, node.parent.acc_state.y_position, 0,
-                                           node.parent.acc_state.velocity, 0, inputs, simulation_param.get("dt"),
-                                           simulation_param.get("dt"), acc_vehicle_param.get("dynamics_param"))
+            state_acc = forward_propagation(node.parent.acc_state.x_position, node.parent.acc_state.y_position, 0,
+                                            node.parent.acc_state.velocity, 0, inputs, simulation_param.get("dt"),
+                                            simulation_param.get("dt"), acc_vehicle_param.get("dynamics_param"))
 
             new_acc_state = State(state_acc[0][0], state_acc[0][1], state_acc[0][2], state_acc[0][3], state_acc[0][4],
                                   0, a_acc, node.lead_state.time_step)

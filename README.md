@@ -25,7 +25,7 @@ The three main files are *falsification.py*, *config.yaml*, and *review.py*:
 **1. config.yaml:** This file allows to adapt all parameters used by 
 the falsification system, e.g. ACC vehicle parameters, simulation parameters, leading vehicle parameters).
 
-**2. falsification.py:** This file starts the falsification, e.g. by executing it within the command line ("python falsification.py > solution.out").
+**2. falsification.py:** This file starts the falsification, e.g., by executing it within the command line ("python falsification.py > solution.out").
 If the storage of solution files is activated in config.yaml or if a valid solution is found, solution files are generated with
 the initial setup (config_xyz.yaml) and the lead vehicle trajectory (trajectory_xyz.pkl), where xyz in the name of the 
 generated files corresponds to a concatenation of the current date and time. 

@@ -153,7 +153,7 @@ acc_param:
         k2: 5.4
         Q: 1
         P: 20
-        t_des: 1.5
+        t_des: 1.2
 
     # Extended PI ACC parameters
     ###

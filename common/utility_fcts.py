@@ -13,6 +13,7 @@ def func_ks(x: List[float], t: float, u: List[float], p: List[float]) -> List[fl
     Vehicle dynamics for kinematic single-track model
 
     :param x: vehicle state vector
+    :param t: time parameter (used in scipy.odeint)
     :param u: vehicle input vector
     :param p: vehicle parameter vector
     :return: right-hand side of differential equations
@@ -21,11 +22,11 @@ def func_ks(x: List[float], t: float, u: List[float], p: List[float]) -> List[fl
     return f
 
 
-def forward_simulation(x_position_center: float, y_position_center: float, steering_angle: float, velocity: float,
-                       yaw_angle: float, inputs: List[float], end_time: float, dt: float,
-                       vehicle_parameter: float) -> Tuple[np.ndarray, dict]:
+def forward_propagation(x_position_center: float, y_position_center: float, steering_angle: float, velocity: float,
+                        yaw_angle: float, inputs: List[float], end_time: float, dt: float,
+                        vehicle_parameter: float) -> Tuple[np.ndarray, dict]:
     """
-    Forward simulation with kinematic single-track model
+    Forward propagation with kinematic single-track model
 
     :param x_position_center: x-position of the vehicle center [m]
     :param y_position_center: y-position of the vehicle center [m]
@@ -129,8 +130,9 @@ def acc_input_forward(acc_planner, node, lead_vehicle_param, acc_vehicle_param, 
     inputs = reaction_delay(node, t_react_acc, a_acc, dt, acc_vehicle_param)
 
     # forward simulation
-    sim_acc_state = forward_simulation(node.acc_state.x_position, node.acc_state.y_position, 0, node.acc_state.velocity,
-                                       0, inputs, dt, dt, acc_vehicle_param.get("dynamics_param"))
+    sim_acc_state = forward_propagation(node.acc_state.x_position, node.acc_state.y_position, 0,
+                                        node.acc_state.velocity, 0, inputs, dt, dt,
+                                        acc_vehicle_param.get("dynamics_param"))
 
     new_acc_state = State(sim_acc_state[-1][0], sim_acc_state[-1][1], sim_acc_state[-1][2], sim_acc_state[-1][3],
                           sim_acc_state[-1][4], 0, a_acc, node.acc_state.time_step + 1)

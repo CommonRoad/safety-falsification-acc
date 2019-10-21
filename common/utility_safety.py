@@ -2,6 +2,7 @@ import numpy as np
 from typing import List, Tuple
 import sys
 
+
 def simulate_vehicle_braking(velocity_list: List[float], position_list: List[float], acceleration: float,
                              a_min: float, dt: float, j_min: float) -> Tuple[List[float], List[float]]:
     """

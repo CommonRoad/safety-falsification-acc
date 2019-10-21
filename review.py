@@ -1,11 +1,12 @@
 """
 Execution of stored results.
-You must provide an input parameter to the script (e.g., "python review.py xyz", where the solution files are called config_xzy.yaml and trajectory_xyz.pkl).
+You must provide an input parameter to the script (e.g., "python review.py xyz", where the solution files are called
+config_xzy.yaml and trajectory_xyz.pkl).
 """
 from common.node import Node
 from acc.acc_interface import AccFactory
 from lead_search.rrt_forward import RRTForward
-from common.utility_fcts import check_feasibility, forward_simulation, acc_input_forward
+from common.utility_fcts import check_feasibility, acc_input_forward
 from common.state import State
 from output.storage import create_commonroad_scenario
 from output.visualization import plot_figures
@@ -18,7 +19,6 @@ def main():
     try:
         solution_file_suffix = sys.argv[1]
     except IndexError:
-        solution_file_suffix = None
         print("Solution file suffix missing!")
         raise ValueError
 
@@ -57,7 +57,7 @@ def main():
         acc_state = acc_input_forward(acc_planner, current_node, lead_vehicle_param,
                                       acc_vehicle_param, t_react_acc, simulation_param.get("dt"))
 
-        # Forward simulation of the leading vehicle
+        # Forward simulation of the leading vehicle with predefined acceleration
         acceleration = check_feasibility(lead_inputs[idx][1], current_node.lead_state.velocity,
                                          lead_vehicle_param.get("a_min"),
                                          lead_vehicle_param.get("a_max"), simulation_param.get("dt"),
@@ -82,11 +82,11 @@ def main():
 
     # If lead profile terminates in unsafe state, continue with full braking
     while unsafe and not collision:
-        # Plan the ACC trajectory based on the selecte controller
+        # Plan the ACC trajectory based on the selected controller
         acc_state = acc_input_forward(acc_planner, current_node, lead_vehicle_param,
                                       acc_vehicle_param, t_react_acc, simulation_param.get("dt"))
 
-        # Forward simulation of the lead vehicle
+        # Forward simulation of the lead vehicle with minimum acceleration
         acceleration = check_feasibility(lead_vehicle_param.get("a_min"), current_node.lead_state.velocity,
                                          lead_vehicle_param.get("a_min"),
                                          lead_vehicle_param.get("a_max"), simulation_param.get("dt"),

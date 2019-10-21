@@ -38,7 +38,7 @@ class PIController(AccFactory):
 
     def acc_control(self, v_lead: float, v_acc: float, s_x_lead: float, s_x_acc: float, a_acc: float) -> float:
         """
-        Calculates the ACC vehicle input
+        Calculates the ACC vehicle input based on the PI-controller ACC
 
         :param v_lead: current velocity of leading vehicle [m/s]
         :param v_acc: current velocity of ACC vehicle [m/s]

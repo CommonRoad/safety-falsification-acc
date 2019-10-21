@@ -2,7 +2,7 @@ import numpy as np
 from lead_search.rrt import RRT
 from common.configuration import SamplingStrategy
 from common.node import Node, State
-from lead_search.utility_search import check_feasibility_backward, backward_simulation
+from lead_search.utility_search import check_feasibility_backward, backward_propagation
 from typing import Dict, List
 
 
@@ -55,7 +55,7 @@ class RRTBackward(RRT):
         while not constraints_fulfilled:
             # Sampling
             sample_s_x, sample_v = self.sample(current_min_position, current_max_position,
-                                             current_min_velocity, current_max_velocity)
+                                               current_min_velocity, current_max_velocity)
 
             # Find nearest node using euclidean distance
             closest_node, node_number = function_calls.get("nearest_node")(node_list, np.array([sample_s_x, sample_v]))
@@ -72,8 +72,8 @@ class RRTBackward(RRT):
             # backward simulation
             inputs = [0, a_new]
 
-            state = backward_simulation(closest_node.lead_state.x_position, closest_node.lead_state.y_position, 0,
-                                        closest_node.lead_state.velocity, 0, inputs, self.dt, self.dt, self._vehicle)
+            state = backward_propagation(closest_node.lead_state.x_position, closest_node.lead_state.y_position, 0,
+                                         closest_node.lead_state.velocity, 0, inputs, self.dt, self.dt, self._vehicle)
             if state[1][3] < 0 or state[0][0] < state[1][0]:
                 continue
             else:

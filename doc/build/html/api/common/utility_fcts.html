@@ -242,9 +242,9 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="utility_fcts.forward_simulation">
-<code class="sig-prename descclassname">utility_fcts.</code><code class="sig-name descname">forward_simulation</code><span class="sig-paren">(</span><em class="sig-param">x_position_center</em>, <em class="sig-param">y_position_center</em>, <em class="sig-param">steering_angle</em>, <em class="sig-param">velocity</em>, <em class="sig-param">yaw_angle</em>, <em class="sig-param">inputs</em>, <em class="sig-param">end_time</em>, <em class="sig-param">dt</em>, <em class="sig-param">vehicle_parameter</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/utility_fcts.html#forward_simulation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utility_fcts.forward_simulation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Forward simulation with kinematic single-track model</p>
+<dt id="utility_fcts.forward_propagation">
+<code class="sig-prename descclassname">utility_fcts.</code><code class="sig-name descname">forward_propagation</code><span class="sig-paren">(</span><em class="sig-param">x_position_center</em>, <em class="sig-param">y_position_center</em>, <em class="sig-param">steering_angle</em>, <em class="sig-param">velocity</em>, <em class="sig-param">yaw_angle</em>, <em class="sig-param">inputs</em>, <em class="sig-param">end_time</em>, <em class="sig-param">dt</em>, <em class="sig-param">vehicle_parameter</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/utility_fcts.html#forward_propagation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#utility_fcts.forward_propagation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Forward propagation with kinematic single-track model</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -276,6 +276,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – vehicle state vector</p></li>
+<li><p><strong>t</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – time parameter (used in scipy.odeint)</p></li>
 <li><p><strong>u</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – vehicle input vector</p></li>
 <li><p><strong>p</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]) – vehicle parameter vector</p></li>
 </ul>

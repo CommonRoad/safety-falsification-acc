@@ -183,7 +183,7 @@
   <h1>Source code for utility_search</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">common.node</span> <span class="k">import</span> <span class="n">Node</span>
 <span class="kn">from</span> <span class="nn">common.state</span> <span class="k">import</span> <span class="n">State</span>
-<span class="kn">from</span> <span class="nn">common.utility_fcts</span> <span class="k">import</span> <span class="n">forward_simulation</span><span class="p">,</span> <span class="n">func_ks</span><span class="p">,</span> <span class="n">reaction_delay</span>
+<span class="kn">from</span> <span class="nn">common.utility_fcts</span> <span class="k">import</span> <span class="n">func_ks</span>
 <span class="kn">from</span> <span class="nn">init_KS</span> <span class="k">import</span> <span class="n">init_KS</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="k">import</span> <span class="n">odeint</span>
@@ -280,11 +280,11 @@
     <span class="k">return</span> <span class="n">a_new</span></div>
 
 
-<div class="viewcode-block" id="backward_simulation"><a class="viewcode-back" href="../api/lead_search/utility_search.html#utility_search.backward_simulation">[docs]</a><span class="k">def</span> <span class="nf">backward_simulation</span><span class="p">(</span><span class="n">x_position_center</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y_position_center</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">steering_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">velocity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-                        <span class="n">yaw_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">end_time</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
-                        <span class="n">vehicle_parameter</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
+<div class="viewcode-block" id="backward_propagation"><a class="viewcode-back" href="../api/lead_search/utility_search.html#utility_search.backward_propagation">[docs]</a><span class="k">def</span> <span class="nf">backward_propagation</span><span class="p">(</span><span class="n">x_position_center</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y_position_center</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">steering_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">velocity</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                         <span class="n">yaw_angle</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">end_time</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">dt</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+                         <span class="n">vehicle_parameter</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Backward simulation with kinematic single-track model</span>
+<span class="sd">    Backward propagation with kinematic single-track model</span>
 
 <span class="sd">    :param x_position_center: x-position of the vehicle center [m]</span>
 <span class="sd">    :param y_position_center: y-position of the vehicle center [m]</span>

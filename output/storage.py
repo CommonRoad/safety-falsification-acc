@@ -120,18 +120,21 @@ def create_commonroad_scenario(current_node: Node, simulation_param: Dict, lead_
         time_step += 1
 
     initial_cr_state_lead = State(position=np.array([current_node.lead_state.x_position,
-                                                  current_node.lead_state.y_position]),
-                               velocity=current_node.lead_state.velocity, steering_angle=0, orientation=0, time_step=0,
-                               acceleration=current_node.lead_state.acceleration, yaw_rate=0, slip_angle=0)
+                                                     current_node.lead_state.y_position]),
+                                  velocity=current_node.lead_state.velocity, steering_angle=0, orientation=0,
+                                  time_step=0, acceleration=current_node.lead_state.acceleration, yaw_rate=0,
+                                  slip_angle=0)
 
     state_list.reverse()
-    initial_cr_state_acc = State(position=np.array([current_node.acc_state.x_position, current_node.acc_state.y_position]),
-                              velocity=current_node.acc_state.velocity, steering_angle=0, orientation=0,
-                              time_step=0, acceleration=current_node.acc_state.acceleration, yaw_rate=0, slip_angle=0)
+    initial_cr_state_acc = State(position=np.array([current_node.acc_state.x_position,
+                                                    current_node.acc_state.y_position]),
+                                 velocity=current_node.acc_state.velocity, steering_angle=0, orientation=0,
+                                 time_step=0, acceleration=current_node.acc_state.acceleration, yaw_rate=0,
+                                 slip_angle=0)
     trajectory = Trajectory(initial_time_step=1, state_list=state_list)
     shape = Rectangle(lead_vehicle_param.get("dynamics_param").l, lead_vehicle_param.get("dynamics_param").w)
     prediction = TrajectoryPrediction(trajectory, shape)
-    lead_vehcile = DynamicObstacle(42, ObstacleType.CAR, shape, initial_cr_state_lead, prediction)
+    lead_vehicle = DynamicObstacle(42, ObstacleType.CAR, shape, initial_cr_state_lead, prediction)
 
     # Create lanelet
     left_vertices_point_list = []
@@ -152,7 +155,7 @@ def create_commonroad_scenario(current_node: Node, simulation_param: Dict, lead_
     # Create scenario and planning problem
     scenario = Scenario(simulation_param.get("dt"), simulation_param.get("commonroad_benchmark_id"))
     scenario.lanelet_network.add_lanelet(lanelet)
-    scenario.add_objects(lead_vehcile)
+    scenario.add_objects(lead_vehicle)
     goal_region = GoalRegion([goal_state])
     planning_problem = PlanningProblem(1, initial_cr_state_acc, goal_region)
     planning_problem_set = PlanningProblemSet([planning_problem])

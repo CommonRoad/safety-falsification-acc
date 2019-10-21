@@ -180,7 +180,8 @@ def animate_profiles(number_frame: int, lead_vehicle_profile: List[float], acc_p
     ax = fig.add_subplot(111)
     ax.xaxis.set_label_coords(0.5, -0.075)
 
-    plt.plot(time_short, lead_vehicle_short, color=(0.0, 0.0, 0.4, 0.75), label='$lead vehicle', linewidth=linewidth_plot)
+    plt.plot(time_short, lead_vehicle_short, color=(0.0, 0.0, 0.4, 0.75), label='$lead vehicle',
+             linewidth=linewidth_plot)
     plt.plot(time_short, acc_short, color=(0.3, 0.3, 0.3, 0.75), label='$ACC$', linewidth=linewidth_plot)
     plt.ylim(y_min, y_max)
     plt.xlim(x_min, x_max)

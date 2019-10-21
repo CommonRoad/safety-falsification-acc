@@ -3,7 +3,7 @@ Abstract RRT class with all functions for the different RRT sub-types.
 """
 import sys
 from common.node import Node
-from common.utility_fcts import forward_simulation, check_feasibility
+from common.utility_fcts import forward_propagation, check_feasibility
 from common.state import State
 import numpy as np
 import math
@@ -279,8 +279,8 @@ class RRT(ABC):
 
         # forward simulation
         inputs = [0, a_new]
-        state = forward_simulation(closest_node.lead_state.x_position, closest_node.lead_state.y_position, 0,
-                                   closest_node.lead_state.velocity, 0, inputs, self.dt, self.dt, self._vehicle)
+        state = forward_propagation(closest_node.lead_state.x_position, closest_node.lead_state.y_position, 0,
+                                    closest_node.lead_state.velocity, 0, inputs, self.dt, self.dt, self._vehicle)
 
         # create new node
         lead_state = State(state[-1][0], state[-1][1], state[-1][2], state[-1][3], state[-1][4], 0, float(a_new))
@@ -303,9 +303,9 @@ class RRT(ABC):
         :return: single node at time step t
         """
         inputs = [steering_velocity, acceleration]
-        state = forward_simulation(closest_node.lead_state.x_position, closest_node.lead_state.y_position,
-                                   closest_node.lead_state.steering_angle, closest_node.lead_state.velocity, 0,
-                                   inputs, self.dt, self.dt, self._vehicle)
+        state = forward_propagation(closest_node.lead_state.x_position, closest_node.lead_state.y_position,
+                                    closest_node.lead_state.steering_angle, closest_node.lead_state.velocity, 0,
+                                    inputs, self.dt, self.dt, self._vehicle)
 
         # create new node
         lead_state = State(state[-1][0], state[-1][1], state[-1][2], state[-1][3], state[-1][4],

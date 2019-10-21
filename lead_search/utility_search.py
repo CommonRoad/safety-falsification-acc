@@ -1,6 +1,6 @@
 from common.node import Node
 from common.state import State
-from common.utility_fcts import forward_simulation, func_ks, reaction_delay
+from common.utility_fcts import func_ks
 from init_KS import init_KS
 import numpy as np
 from scipy.integrate import odeint
@@ -97,11 +97,11 @@ def check_feasibility_backward(a_new: float, v: float, a_min: float, a_max: floa
     return a_new
 
 
-def backward_simulation(x_position_center: float, y_position_center: float, steering_angle: float, velocity: float,
-                        yaw_angle: float, inputs: List[float], end_time: float, dt: float,
-                        vehicle_parameter: Dict) -> Tuple[np.ndarray, dict]:
+def backward_propagation(x_position_center: float, y_position_center: float, steering_angle: float, velocity: float,
+                         yaw_angle: float, inputs: List[float], end_time: float, dt: float,
+                         vehicle_parameter: Dict) -> Tuple[np.ndarray, dict]:
     """
-    Backward simulation with kinematic single-track model
+    Backward propagation with kinematic single-track model
 
     :param x_position_center: x-position of the vehicle center [m]
     :param y_position_center: y-position of the vehicle center [m]
