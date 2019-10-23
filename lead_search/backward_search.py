@@ -55,7 +55,7 @@ def check_unsafe_node_reached(node: Node, simulation_param: Dict, rrt_param: Dic
         node = lead_planner.forward_simulation(0, a_new, node, acc_state, lead_vehicle_param,
                                                acc_vehicle_param, simulation_param)
 
-    # Check if safe distance is violated and if collision is valid in case initial node was safe
+    # Check if unsafe distance is violated
     if node.delta_s <= node.unsafe_distance:
         return True, initial_node_safe
     else:
@@ -124,26 +124,6 @@ def acc_random_backward(node_list: List[Node], acc_vehicle_param: Dict, dt: floa
         acc_state_list.append(acc_state)
 
     return acc_state_list
-
-
-def is_valid_initial_node(node: Node) -> bool:
-    """
-    Validate if current node is a valid solution
-
-    :param node: node to evaluate
-    return boolean indicating if node is a valid initial node
-    """
-    safe_distance = False
-    collision = True
-
-    if node.delta_s > node.safe_distance:
-        safe_distance = True
-    if node.delta_s > 0:
-        collision = False
-    if safe_distance and not collision:
-        return True
-    else:
-        return False
 
 
 def search(rrt_param: Dict, acc_vehicle_param: Dict, simulation_param: Dict, lead_vehicle_param: Dict,

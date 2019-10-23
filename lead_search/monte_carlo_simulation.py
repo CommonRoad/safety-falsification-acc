@@ -96,6 +96,7 @@ def search(rrt_param: Dict, acc_vehicle_param: Dict, simulation_param: Dict, lea
             if node.delta_s <= 0:
                 collision = True
                 node_list = [node]
+                print("collision")
                 break
         if collision:
             break
@@ -103,9 +104,8 @@ def search(rrt_param: Dict, acc_vehicle_param: Dict, simulation_param: Dict, lea
     # Store results
     if simulation_param.get("safe_results"):
         if len(node_list) == 1:
-            collision_node_number = 0
+            output_node_number = 0
         else:
-            collision_node_number = np.random.randint(0, len(node_list))
-        store_results(node_list[collision_node_number], simulation_param, acc_vehicle_param, lead_vehicle_param,
+            output_node_number = np.random.randint(0, len(node_list))
+        store_results(node_list[output_node_number], simulation_param, acc_vehicle_param, lead_vehicle_param,
                       rrt_param, acc_param_all_controllers)
-    return collision

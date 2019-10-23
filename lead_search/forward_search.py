@@ -27,7 +27,7 @@ def check_unsafe_node_reached(node_list: List[Node]) -> Tuple[List[Node], bool]:
 
 
 def search(rrt_param: Dict, acc_vehicle_param: Dict, simulation_param: Dict, lead_vehicle_param: Dict,
-           acc_param: Dict, acc_param_all_controllers: Dict) -> bool:
+           acc_param: Dict, acc_param_all_controllers: Dict):
     """
     Forward search using RRT
 
@@ -37,12 +37,11 @@ def search(rrt_param: Dict, acc_vehicle_param: Dict, simulation_param: Dict, lea
     :param lead_vehicle_param: dictionary with physical parameters of the leading vehicle
     :param acc_param: dictionary with parameters of selected ACC controller
     :param acc_param_all_controllers: dictionary with parameter dictionaries for each ACC controller
-    :return: boolean value indicating that an unsafe state was found
     """
     # Initialize simulation parameters
     num_iterations = simulation_param.get("num_iterations")
     t_react_acc = int(acc_vehicle_param.get("t_react") / simulation_param.get("dt"))
-    collision = False
+    unsafe = False
 
     # Initialize vehicle planners
     lead_planner = RRTForward(simulation_param, rrt_param, lead_vehicle_param)
@@ -71,11 +70,11 @@ def search(rrt_param: Dict, acc_vehicle_param: Dict, simulation_param: Dict, lea
         node_list = lead_planner.plan(node_list, acc_state_list, lead_vehicle_param, acc_vehicle_param,
                                       simulation_param)
 
-    if simulation_param.get("store_results") or collision:
+    if simulation_param.get("store_results") or unsafe:
         if len(node_list) == 1:
-            collision_node_number = 0
+            output_node_number = 0
         else:
-            collision_node_number = np.random.randint(0, len(node_list))
-        store_results(node_list[collision_node_number], simulation_param, acc_vehicle_param, lead_vehicle_param,
+            output_node_number = np.random.randint(0, len(node_list))
+        store_results(node_list[output_node_number], simulation_param, acc_vehicle_param, lead_vehicle_param,
                       rrt_param, acc_param_all_controllers)
-    return collision
+

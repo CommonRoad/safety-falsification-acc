@@ -279,6 +279,7 @@
             <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">delta_s</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">collision</span> <span class="o">=</span> <span class="kc">True</span>
                 <span class="n">node_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">node</span><span class="p">]</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;collision&quot;</span><span class="p">)</span>
                 <span class="k">break</span>
         <span class="k">if</span> <span class="n">collision</span><span class="p">:</span>
             <span class="k">break</span>
@@ -286,12 +287,11 @@
     <span class="c1"># Store results</span>
     <span class="k">if</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;safe_results&quot;</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">collision_node_number</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">output_node_number</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">collision_node_number</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_list</span><span class="p">))</span>
-        <span class="n">store_results</span><span class="p">(</span><span class="n">node_list</span><span class="p">[</span><span class="n">collision_node_number</span><span class="p">],</span> <span class="n">simulation_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span>
-                      <span class="n">rrt_param</span><span class="p">,</span> <span class="n">acc_param_all_controllers</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">collision</span></div>
+            <span class="n">output_node_number</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_list</span><span class="p">))</span>
+        <span class="n">store_results</span><span class="p">(</span><span class="n">node_list</span><span class="p">[</span><span class="n">output_node_number</span><span class="p">],</span> <span class="n">simulation_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span>
+                      <span class="n">rrt_param</span><span class="p">,</span> <span class="n">acc_param_all_controllers</span><span class="p">)</span></div>
 </pre></div>
 
            </div>

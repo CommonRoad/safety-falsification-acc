@@ -103,9 +103,9 @@ def create_commonroad_scenario(current_node: Node, simulation_param: Dict, lead_
     # Create initial/goal state and dynamic obstacle for leading vehicle
     state_list = []
     time_step = 1
-    goal_position_shape = Rectangle(5 + lead_vehicle_param.get("dynamics_param").l, 3.5,
+    goal_position_shape = Rectangle(10, 3.5,
                                     np.array([current_node.lead_state.x_position -
-                                              0.5 * (5 + lead_vehicle_param.get("dynamics_param").l) - 0.01, 1.75]))
+                                              0.5 * lead_vehicle_param.get("dynamics_param").l - 5.01, 1.75]))
     goal_state = State(position=goal_position_shape,
                        velocity=Interval(0, 0.1),
                        orientation=AngleInterval(-0.01, 0.01), time_step=Interval(0, current_node.lead_state.time_step))

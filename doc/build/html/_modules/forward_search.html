@@ -210,7 +210,7 @@
 
 
 <div class="viewcode-block" id="search"><a class="viewcode-back" href="../api/lead_search/forward_search.html#forward_search.search">[docs]</a><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">rrt_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">simulation_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span>
-           <span class="n">acc_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_param_all_controllers</span><span class="p">:</span> <span class="n">Dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+           <span class="n">acc_param</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">acc_param_all_controllers</span><span class="p">:</span> <span class="n">Dict</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Forward search using RRT</span>
 
@@ -220,12 +220,11 @@
 <span class="sd">    :param lead_vehicle_param: dictionary with physical parameters of the leading vehicle</span>
 <span class="sd">    :param acc_param: dictionary with parameters of selected ACC controller</span>
 <span class="sd">    :param acc_param_all_controllers: dictionary with parameter dictionaries for each ACC controller</span>
-<span class="sd">    :return: boolean value indicating that an unsafe state was found</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Initialize simulation parameters</span>
     <span class="n">num_iterations</span> <span class="o">=</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;num_iterations&quot;</span><span class="p">)</span>
     <span class="n">t_react_acc</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">acc_vehicle_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;t_react&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">))</span>
-    <span class="n">collision</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">unsafe</span> <span class="o">=</span> <span class="kc">False</span>
 
     <span class="c1"># Initialize vehicle planners</span>
     <span class="n">lead_planner</span> <span class="o">=</span> <span class="n">RRTForward</span><span class="p">(</span><span class="n">simulation_param</span><span class="p">,</span> <span class="n">rrt_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">)</span>
@@ -254,14 +253,14 @@
         <span class="n">node_list</span> <span class="o">=</span> <span class="n">lead_planner</span><span class="o">.</span><span class="n">plan</span><span class="p">(</span><span class="n">node_list</span><span class="p">,</span> <span class="n">acc_state_list</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span>
                                       <span class="n">simulation_param</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;store_results&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">collision</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">simulation_param</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;store_results&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">unsafe</span><span class="p">:</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">collision_node_number</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">output_node_number</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">collision_node_number</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_list</span><span class="p">))</span>
-        <span class="n">store_results</span><span class="p">(</span><span class="n">node_list</span><span class="p">[</span><span class="n">collision_node_number</span><span class="p">],</span> <span class="n">simulation_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span>
-                      <span class="n">rrt_param</span><span class="p">,</span> <span class="n">acc_param_all_controllers</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">collision</span></div>
+            <span class="n">output_node_number</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">node_list</span><span class="p">))</span>
+        <span class="n">store_results</span><span class="p">(</span><span class="n">node_list</span><span class="p">[</span><span class="n">output_node_number</span><span class="p">],</span> <span class="n">simulation_param</span><span class="p">,</span> <span class="n">acc_vehicle_param</span><span class="p">,</span> <span class="n">lead_vehicle_param</span><span class="p">,</span>
+                      <span class="n">rrt_param</span><span class="p">,</span> <span class="n">acc_param_all_controllers</span><span class="p">)</span></div>
+
 </pre></div>
 
            </div>
