@@ -100,10 +100,8 @@ def safe_distance(v_acc: float, v_lead: float, a_min_acc: float, a_min_lead: flo
 
     # Safe distance calculation:
     delta_s = np.subtract(s_lead_list[1::], s_acc_list[1::])
-    try:
-        min_delta_s = np.min(delta_s)
-    except:
-        print("bug")
+    min_delta_s = np.min(delta_s)
+
     safe_dist = max(0, initial_distance - min_delta_s)
 
     return safe_dist
